@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhishek Sharma - political researcher, writer, and policy analyst working on elections, democracy, technology, and digital politics in India.">
+  <title>Abhishek Sharma - Political Researcher & Writer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0f0e;
+      --ink-2: #151817;
+      --ink-3: #1d211f;
+      --paper: #f4efe5;
+      --muted: #b7aea0;
+      --quiet: #756d62;
+      --line: rgba(244, 239, 229, 0.12);
+      --gold: #d6a14a;
+      --teal: #65b9ad;
+      --rust: #c86d4f;
+      --green: #93b56b;
+      --violet: #9c8ec5;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 76% 6%, rgba(101, 185, 173, 0.13), transparent 32rem),
+        radial-gradient(circle at 9% 28%, rgba(200, 109, 79, 0.10), transparent 30rem),
+        linear-gradient(180deg, #0d0f0e 0%, #111311 42%, #0d0f0e 100%);
+      color: var(--paper);
+      font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.32;
+      background-image:
+        linear-gradient(rgba(244, 239, 229, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 239, 229, 0.025) 1px, transparent 1px);
+      background-size: 84px 84px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      position: relative;
+      padding: 96px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 96px;
+    }
+
+    .section.alt {
+      background: rgba(244, 239, 229, 0.025);
+    }
+
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .section-kicker::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(214, 161, 74, 0.42), transparent);
+    }
+
+    .section-title {
+      max-width: 780px;
+      font-size: 4.4rem;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      max-width: 740px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 28px;
+      border-bottom: 1px solid transparent;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .topbar.is-scrolled {
+      background: rgba(13, 15, 14, 0.86);
+      border-bottom-color: var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(214, 161, 74, 0.55);
+      color: var(--gold);
+      border-radius: 50%;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(244, 239, 229, 0.035);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      background: rgba(214, 161, 74, 0.10);
+      border-color: rgba(214, 161, 74, 0.38);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      padding: 124px 0 72px;
+    }
+
+    #atlas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.58;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(13, 15, 14, 0.98) 0%, rgba(13, 15, 14, 0.72) 52%, rgba(13, 15, 14, 0.35) 100%),
+        linear-gradient(180deg, transparent 0%, rgba(13, 15, 14, 0.88) 96%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 920px;
+    }
+
+    .hero-location {
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-size: 6.9rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-name span {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244, 239, 229, 0.72);
+    }
+
+    .hero-interest {
+      max-width: 850px;
+      color: var(--paper);
+      font-size: 1.38rem;
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    .hero-interest strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 1px solid rgba(244, 239, 229, 0.16);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(13, 15, 14, 0.42);
+      backdrop-filter: blur(10px);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid rgba(214, 161, 74, 0.58);
+      border-radius: 6px;
+      color: var(--gold);
+      background: rgba(214, 161, 74, 0.08);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(214, 161, 74, 0.16);
+      border-color: var(--gold);
+    }
+
+    .button.secondary {
+      color: var(--paper);
+      border-color: rgba(244, 239, 229, 0.16);
+      background: rgba(244, 239, 229, 0.04);
+    }
+
+    .hero-metrics {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 64px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .metric {
+      min-height: 122px;
+      padding: 22px;
+      background: rgba(13, 15, 14, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--paper);
+      font-size: 2.1rem;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .metric span {
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .archive-tools {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin: 42px 0 28px;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      outline: none;
+      color: var(--paper);
+      background: rgba(244, 239, 229, 0.04);
+    }
+
+    .search:focus {
+      border-color: rgba(214, 161, 74, 0.72);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .filter {
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(244, 239, 229, 0.035);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .filter.is-active,
+    .filter:hover {
+      color: var(--ink);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .archive {
+      border-top: 1px solid var(--line);
+    }
+
+    .pub {
+      display: grid;
+      grid-template-columns: 96px 150px 1fr 74px;
+      gap: 18px;
+      align-items: start;
+      min-height: 94px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pub:hover {
+      padding-left: 10px;
+      border-color: rgba(214, 161, 74, 0.44);
+    }
+
+    .pub-year {
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      width: fit-content;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: rgba(244, 239, 229, 0.08);
+      border: 1px solid rgba(244, 239, 229, 0.10);
+    }
+
+    .tag.hindu { color: #ffb8b8; background: rgba(200, 45, 45, 0.13); }
+    .tag.wire { color: #dad6cf; background: rgba(218, 214, 207, 0.09); }
+    .tag.scroll { color: #ffb076; background: rgba(255, 132, 47, 0.13); }
+    .tag.express { color: #9bc2ff; background: rgba(78, 132, 204, 0.14); }
+    .tag.csds { color: #b8e28d; background: rgba(120, 167, 78, 0.14); }
+    .tag.epw { color: #c8baf1; background: rgba(156, 142, 197, 0.14); }
+    .tag.foif { color: #8edbd0; background: rgba(101, 185, 173, 0.14); }
+
+    .pub-title {
+      color: var(--paper);
+      font-size: 1.12rem;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .pub-meta {
+      color: var(--quiet);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .pub-link,
+    .pub-missing {
+      justify-self: end;
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9rem;
+    }
+
+    .pub-missing {
+      color: var(--quiet);
+    }
+
+    .archive-empty {
+      display: none;
+      padding: 26px 0;
+      color: var(--quiet);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .panel-title {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .panel-copy {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+      box-shadow: var(--shadow);
+      margin-top: 44px;
+    }
+
+    .impact-cell {
+      min-height: 140px;
+      padding: 22px;
+      background: var(--ink-2);
+    }
+
+    .impact-cell strong {
+      display: block;
+      color: var(--gold);
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .impact-cell span {
+      display: block;
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .quote {
+      min-height: 230px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(244, 239, 229, 0.04);
+    }
+
+    .quote p {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .quote cite {
+      display: block;
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      font-style: normal;
+      text-transform: uppercase;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .evidence {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(214, 161, 74, 0.18), rgba(101, 185, 173, 0.08)),
+        var(--ink-2);
+    }
+
+    .evidence.has-image {
+      background: var(--ink-2);
+    }
+
+    .evidence.has-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(0.94);
+    }
+
+    .evidence.has-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(13, 15, 14, 0.08), rgba(13, 15, 14, 0.86));
+    }
+
+    .evidence.tall {
+      grid-row: span 2;
+      min-height: 536px;
+    }
+
+    .evidence.has-image::before {
+      display: none;
+    }
+
+    .evidence::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      opacity: 0.72;
+      border: 1px solid rgba(244, 239, 229, 0.08);
+      background:
+        linear-gradient(rgba(244, 239, 229, 0.12), rgba(244, 239, 229, 0.12)) 20px 28px / 68% 2px no-repeat,
+        linear-gradient(rgba(244, 239, 229, 0.09), rgba(244, 239, 229, 0.09)) 20px 54px / 86% 2px no-repeat,
+        linear-gradient(rgba(244, 239, 229, 0.07), rgba(244, 239, 229, 0.07)) 20px 80px / 58% 2px no-repeat,
+        repeating-linear-gradient(180deg, transparent 0, transparent 28px, rgba(244, 239, 229, 0.045) 29px, transparent 30px);
+    }
+
+    .evidence-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--paper);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .report-grid,
+    .place-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .report-card,
+    .place-card,
+    .project-card,
+    .person-card,
+    .credential-card,
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(244, 239, 229, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .report-card,
+    .place-card,
+    .project-card,
+    .credential-card {
+      padding: 24px;
+    }
+
+    .report-card:hover,
+    .place-card:hover,
+    .project-card:hover,
+    .person-card:hover,
+    .credential-card:hover,
+    .timeline-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(214, 161, 74, 0.46);
+      background: rgba(244, 239, 229, 0.065);
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      margin: 12px 0 10px;
+    }
+
+    .card-copy {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(244, 239, 229, 0.055);
+      border: 1px solid rgba(244, 239, 229, 0.08);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .person-card {
+      min-height: 300px;
+      padding: 22px;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1px solid rgba(214, 161, 74, 0.46);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(214, 161, 74, 0.32), transparent 42%),
+        rgba(244, 239, 229, 0.04);
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .person-name {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .person-role {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.52;
+    }
+
+    .person-context {
+      color: var(--gold);
+      margin-top: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .experience-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 48px;
+    }
+
+    .experience-step {
+      min-height: 180px;
+      padding: 20px;
+      background: var(--ink-2);
+    }
+
+    .experience-step span {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+    }
+
+    .experience-step strong {
+      display: block;
+      font-size: 1.08rem;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .experience-step p {
+      color: var(--quiet);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .credential-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .credential-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .credential-row {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .credential-row:last-child {
+      border-bottom: 0;
+    }
+
+    .credential-year {
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+    }
+
+    .credential-text strong {
+      display: block;
+      color: var(--paper);
+      line-height: 1.35;
+    }
+
+    .credential-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      margin-top: 3px;
+    }
+
+    .pipeline-note {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border: 1px solid rgba(101, 185, 173, 0.35);
+      border-radius: 8px;
+      background: rgba(101, 185, 173, 0.08);
+      margin-top: 32px;
+      color: var(--muted);
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 0 rgba(101, 185, 173, 0.5);
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 14px rgba(101, 185, 173, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(101, 185, 173, 0); }
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 310px;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--teal), transparent);
+    }
+
+    .project-index {
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .moments-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .moment {
+      position: relative;
+      overflow: hidden;
+      min-height: 290px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--ink-2);
+    }
+
+    .moment img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(0.95);
+      transition: transform 0.35s ease;
+    }
+
+    .moment:hover img {
+      transform: scale(1.035);
+    }
+
+    .moment.has-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(13, 15, 14, 0.02), rgba(13, 15, 14, 0.82) 72%);
+    }
+
+    .moment.feature {
+      grid-row: span 2;
+      min-height: 594px;
+    }
+
+    .moment.launch-highlight {
+      grid-column: 1 / -1;
+      min-height: 460px;
+    }
+
+    .moment.launch-highlight img {
+      object-position: center 44%;
+    }
+
+    .moment.contain img {
+      object-fit: contain;
+      padding: 12px;
+      background: #f4efe5;
+    }
+
+    .moment-visual {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 68% 20%, rgba(214, 161, 74, 0.22), transparent 26%),
+        radial-gradient(circle at 20% 74%, rgba(101, 185, 173, 0.18), transparent 30%),
+        linear-gradient(135deg, rgba(244, 239, 229, 0.10), transparent),
+        repeating-linear-gradient(45deg, transparent 0, transparent 12px, rgba(244, 239, 229, 0.035) 13px, transparent 14px);
+      transform: scale(1.02);
+    }
+
+    .moment:nth-child(2) .moment-visual { background-color: rgba(200, 109, 79, 0.10); }
+    .moment:nth-child(3) .moment-visual { background-color: rgba(101, 185, 173, 0.10); }
+    .moment:nth-child(4) .moment-visual { background-color: rgba(147, 181, 107, 0.10); }
+    .moment:nth-child(5) .moment-visual { background-color: rgba(156, 142, 197, 0.12); }
+
+    .moment-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 22px;
+      background: linear-gradient(180deg, transparent, rgba(13, 15, 14, 0.92) 42%);
+    }
+
+    .moment-caption span {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .moment-caption strong {
+      display: block;
+      font-size: 1.12rem;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .moment-caption p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 52px;
+      align-items: start;
+      margin-top: 34px;
+    }
+
+    .contact-title {
+      font-size: 4.2rem;
+      margin-bottom: 18px;
+    }
+
+    .contact-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .contact-copy {
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 58px;
+      padding: 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--paper);
+      background: rgba(244, 239, 229, 0.035);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(214, 161, 74, 0.44);
+      background: rgba(214, 161, 74, 0.08);
+    }
+
+    .contact-link span:first-child {
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .contact-form {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(244, 239, 229, 0.04);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--paper);
+      background: rgba(13, 15, 14, 0.55);
+      outline: none;
+      padding: 10px 12px;
+    }
+
+    .field textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(214, 161, 74, 0.68);
+    }
+
+    .form-error,
+    .form-ok {
+      display: none;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    .form-error {
+      color: #ff9f8f;
+    }
+
+    .form-ok {
+      color: var(--teal);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 26px 28px;
+      color: var(--quiet);
+      border-top: 1px solid var(--line);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1020px) {
+      .hero-name {
+        font-size: 5.2rem;
+      }
+
+      .section-title,
+      .contact-title {
+        font-size: 3.4rem;
+      }
+
+      .pub {
+        grid-template-columns: 72px 128px 1fr 44px;
+      }
+
+      .people-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .impact-grid,
+      .quote-grid,
+      .hero-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .evidence-grid,
+      .moments-grid,
+      .contact-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence.tall,
+      .moment.feature {
+        grid-row: auto;
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        font-size: 16px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 18px;
+      }
+
+      .nav-links {
+        display: flex;
+        width: calc(100vw - 36px);
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 154px 0 54px;
+      }
+
+      .hero-name {
+        font-size: 3.45rem;
+      }
+
+      .hero-interest {
+        font-size: 1.08rem;
+      }
+
+      .section {
+        padding: 72px 0;
+        scroll-margin-top: 146px;
+      }
+
+      .section-title,
+      .contact-title {
+        font-size: 2.7rem;
+      }
+
+      .archive-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-row {
+        justify-content: flex-start;
+      }
+
+      .pub {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .pub-link,
+      .pub-missing {
+        justify-self: start;
+      }
+
+      .report-grid,
+      .place-grid,
+      .project-grid,
+      .credential-grid,
+      .people-grid,
+      .impact-grid,
+      .quote-grid,
+      .hero-metrics,
+      .experience-strip,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-link {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#hero" aria-label="Abhishek Sharma home">
+      <span class="brand-mark">AS</span>
+      <span>Abhishek Sharma</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li><a href="#work">Works</a></li>
+        <li><a href="#research">Collaborations</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#credentials">Education</a></li>
+        <li><a href="#moments">Moments</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <canvas id="atlas" aria-hidden="true"></canvas>
+      <div class="wrap hero-content">
+        <p class="mono hero-location reveal">Delhi, India - Political Researcher - Writer - Policy Analyst</p>
+        <h1 class="hero-name reveal">Abhishek <span>Sharma</span></h1>
+        <p class="hero-interest reveal">
+          I am interested in <strong>elections, politics, democracy, technology, digital democracy, and digital politics</strong> - especially how data, platforms, campaigns, and institutions now shape public life in India.
+        </p>
+        <div class="hero-strip reveal" aria-label="Selected affiliations and outlets">
+          <span class="hero-pill">Office of Abhishek Dutt</span>
+          <span class="hero-pill">Lokniti-CSDS</span>
+          <span class="hero-pill">The Hindu</span>
+          <span class="hero-pill">The Wire</span>
+          <span class="hero-pill">Indian Express</span>
+          <span class="hero-pill">Scroll</span>
+        </div>
+        <div class="hero-actions reveal">
+          <a class="button" href="#work">View public work</a>
+          <a class="button secondary" href="#research">See research exposure</a>
+        </div>
+      </div>
+      <div class="wrap hero-metrics reveal" aria-label="Profile highlights">
+        <div class="metric"><strong>16+</strong><span>Articles, reports, and papers</span></div>
+        <div class="metric"><strong>60k+</strong><span>Parliamentary questions analysed</span></div>
+        <div class="metric"><strong>50k+</strong><span>Voter records studied</span></div>
+        <div class="metric"><strong>100+</strong><span>RTIs and inputs filed</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">01 - Work Archive</div>
+        <h2 class="section-title reveal">Publications<br>&amp; Research</h2>
+        <p class="section-intro reveal">
+          The centre of the portfolio is the work itself: published articles, policy-facing research, national reports, and writing that turns political data into arguments a wider public can use.
+        </p>
+
+        <div class="archive-tools reveal">
+          <input class="search" id="archiveSearch" type="search" placeholder="Search by title, outlet, topic, or collaborator" aria-label="Search publications">
+          <div class="filter-row" aria-label="Filter publications">
+            <button class="filter is-active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="article">Articles</button>
+            <button class="filter" type="button" data-filter="report">Reports</button>
+            <button class="filter" type="button" data-filter="the-hindu">The Hindu</button>
+            <button class="filter" type="button" data-filter="wire">The Wire</button>
+            <button class="filter" type="button" data-filter="review">Under Review</button>
+          </div>
+        </div>
+
+        <div class="archive" id="archiveList">
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="elephant data room india standardise data standardisation interoperable governance the hindu 2026 digital governance">
+            <span class="pub-year">2026</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">The Elephant in the Data Room: Why India Must Standardise</h3>
+              <p class="pub-meta">Independent editorial-page piece on data standardisation, interoperability, and why fragmented public data systems carry governance and economic costs.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="gaps regulating digital campaigns the hindu 2025 elections technology">
+            <span class="pub-year">2025</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Gaps in Regulating Digital Campaigns</h3>
+              <p class="pub-meta">Digital campaign regulation, electoral transparency, and fairness in platform-mediated politics.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="reframing language question the hindu nep education policy 2025">
+            <span class="pub-year">2025</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Reframing the Language Question</h3>
+              <p class="pub-meta">A policy lens on the three-language formula, moving the debate from imposition alone toward empowerment and resolution.</p>
+            </div>
+            <a class="pub-link" href="https://lnkd.in/gGeDHGUN" target="_blank" rel="noreferrer">Open</a>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="indian-express" data-search="from questions to action parliament youth employment indian express ruchi gupta vandita gupta 2025">
+            <span class="pub-year">2025</span>
+            <span class="tag express">Indian Express</span>
+            <div>
+              <h3 class="pub-title">From Questions to Action: Why Parliament Must Lead on Youth Employment</h3>
+              <p class="pub-meta">With Ruchi Gupta and Vandita Gupta. Drawn from the Future of India Foundation's parliamentary research program.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="wire" data-search="60000 questions parliament youth employment india the wire ruchi gupta vandita gupta 2025">
+            <span class="pub-year">2025</span>
+            <span class="tag wire">The Wire</span>
+            <div>
+              <h3 class="pub-title">What 60,000 Questions in Parliament Reveal About Youth Employment in India</h3>
+              <p class="pub-meta">With Ruchi Gupta and Vandita Gupta. A public-facing synthesis of parliamentary attention to youth employment.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="report" data-outlet="csds" data-search="advertisements trends targeting tactics digital campaign strategies 2024 lok sabha election lokniti csds report">
+            <span class="pub-year">2025</span>
+            <span class="tag csds">Lokniti-CSDS</span>
+            <div>
+              <h3 class="pub-title">Advertisements, Trends, and Targeting Tactics: Digital Campaign Strategies in the 2024 Lok Sabha Election</h3>
+              <p class="pub-meta">A national, data-intensive report on digital political communication during the 2024 general election.</p>
+            </div>
+            <span class="pub-missing">Report</span>
+          </article>
+
+          <article class="pub reveal" data-kind="report" data-outlet="foif" data-search="public record parliament youth employment future of india foundation 60000 questions report 2025">
+            <span class="pub-year">2025</span>
+            <span class="tag foif">FoIF</span>
+            <div>
+              <h3 class="pub-title">The Public Record: Parliament on Youth Employment</h3>
+              <p class="pub-meta">Future of India Foundation report based on 60,000+ parliamentary questions from the 17th Lok Sabha.</p>
+            </div>
+            <span class="pub-missing">Report</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="scroll" data-search="women voters maharashtra outcome issues prioritise scroll 2024 elections">
+            <span class="pub-year">2024</span>
+            <span class="tag scroll">Scroll</span>
+            <div>
+              <h3 class="pub-title">Women Voters Played a Key Role in Maharashtra Outcome. What Issues Did They Prioritise?</h3>
+              <p class="pub-meta">Election survey interpretation on gendered voter priorities and the Maharashtra result.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="joy fear anger bjp inc digital playbook the hindu 2024 digital elections">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Joy, Fear and Anger: The BJP and INC's Digital Playbook</h3>
+              <p class="pub-meta">Digital campaign messaging, emotional appeals, and party strategy during the 2024 election cycle.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="democratic engagement digital plug-in the hindu sanjay kumar csds 2024 democracy technology">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Democratic Engagement with a Digital Plug-In</h3>
+              <p class="pub-meta">Lead editorial with Prof. Sanjay Kumar on the double-edged democratic consequences of digital politics.</p>
+            </div>
+            <a class="pub-link" href="https://lnkd.in/gyjnMAm8" target="_blank" rel="noreferrer">Open</a>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="wire" data-search="do people really like narendra modi numbers christophe jaffrelot the wire 2024 voter behaviour">
+            <span class="pub-year">2024</span>
+            <span class="tag wire">The Wire</span>
+            <div>
+              <h3 class="pub-title">Do People Really Like Narendra Modi? Here's What the Numbers Say</h3>
+              <p class="pub-meta">With Prof. Christophe Jaffrelot. Public opinion, leadership approval, and the interpretation of survey evidence.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="duality understanding indian voter behaviour the hindu 2024 elections">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Duality: Understanding Indian Voter Behaviour</h3>
+              <p class="pub-meta">An editorial argument on the layered nature of voter decision-making in India.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="wire" data-search="economic social justice identity politics voters the wire 2024 elections">
+            <span class="pub-year">2024</span>
+            <span class="tag wire">The Wire</span>
+            <div>
+              <h3 class="pub-title">For Voters, Economic and Social Justice Mattered More Than Identity Politics</h3>
+              <p class="pub-meta">A reading of voter priorities through economic and social justice frames.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="unveiling veil expenditure disparities india electoral system the hindu 2024 election commission">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Unveiling the Veil: Expenditure Disparities in India's Electoral System</h3>
+              <p class="pub-meta">Campaign finance, expenditure asymmetry, and the need to regulate the electoral playing field.</p>
+            </div>
+            <a class="pub-link" href="https://www.thehindu.com/news/national/unveiling-the-veil-expenditure-disparities-in-indias-electoral-system/article68143486.ece" target="_blank" rel="noreferrer">Open</a>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="architects of hate fuelling discord india digital elections the hindu 2024 third-party advertisement">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Architects of Hate: Who is Fuelling Discord in India's Digital Elections?</h3>
+              <p class="pub-meta">Third-party advertisers, inflammatory content, and the regulatory blind spots of digital campaigning.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="analysing digital ad campaigns silence period lok sabha phase 1 the hindu 2024">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Analysing Digital Ad Campaigns During the Silence Period of Lok Sabha Phase 1</h3>
+              <p class="pub-meta">A data-based look at digital advertising during the legally sensitive silence period.</p>
+            </div>
+            <span class="pub-missing">URL</span>
+          </article>
+
+          <article class="pub reveal" data-kind="article" data-outlet="the-hindu" data-search="analysis ad campaign bjp congress lok sabha elections the hindu 2024 digital ads">
+            <span class="pub-year">2024</span>
+            <span class="tag hindu">The Hindu</span>
+            <div>
+              <h3 class="pub-title">Analysis of the Ad Campaign of the BJP and Congress During the Lok Sabha Elections</h3>
+              <p class="pub-meta">Comparative analysis of major-party digital advertising during the 2024 general election.</p>
+            </div>
+            <a class="pub-link" href="https://lnkd.in/gZ2kV2UH" target="_blank" rel="noreferrer">Open</a>
+          </article>
+
+          <article class="pub reveal" data-kind="review" data-outlet="epw" data-search="third-party players india emerging menace electoral campaigns epw under review">
+            <span class="pub-year">2025</span>
+            <span class="tag epw">EPW</span>
+            <div>
+              <h3 class="pub-title">Third-Party Players in India: The Emerging Menace in Electoral Campaigns</h3>
+              <p class="pub-meta">Under review with Economic and Political Weekly. Focused on digital third-party campaign actors and regulatory risk.</p>
+            </div>
+            <span class="pub-missing">Review</span>
+          </article>
+        </div>
+        <p class="archive-empty" id="archiveEmpty">No matching work found.</p>
+
+        <div class="impact-grid reveal" aria-label="Impact metrics">
+          <div class="impact-cell"><strong>35k+</strong><span>Tracked LinkedIn impressions</span></div>
+          <div class="impact-cell"><strong>109+</strong><span>Reactions on latest Hindu piece</span></div>
+          <div class="impact-cell"><strong>16k+</strong><span>Impressions on hiring/research call</span></div>
+          <div class="impact-cell"><strong>4</strong><span>National media outlets</span></div>
+        </div>
+
+        <div class="quote-grid">
+          <figure class="quote reveal">
+            <p>"Someone shared your article today in The Hindu on data governance. I read it - it is very well written and very insightful."</p>
+            <cite>Reader message - Data governance piece</cite>
+          </figure>
+          <figure class="quote reveal">
+            <p>"Congratulations on penning an incisive piece on the need for data standardisation in today's edition of The Hindu."</p>
+            <cite>Reader message - The Hindu</cite>
+          </figure>
+          <figure class="quote reveal">
+            <p>"I recently came across your writings on election and democracy, and I felt encouraged to reach out. This brings out really important points."</p>
+            <cite>IIT Kharagpur reader - Electoral writing</cite>
+          </figure>
+        </div>
+
+        <div class="evidence-grid" aria-label="Reception and engagement gallery">
+          <div class="evidence tall has-image reveal">
+            <img src="assets/preview.webp" alt="CSDS report launch panel for Advertisements, Trends, and Targeting Tactics" loading="lazy">
+            <span class="evidence-label"><span>Report launch</span><span>Constitution Club</span></span>
+          </div>
+          <div class="evidence has-image reveal">
+            <img src="assets/reader-reactions.jpg" alt="Reader reactions and messages praising Abhishek Sharma's articles" loading="lazy">
+            <span class="evidence-label"><span>LinkedIn response</span><span>The Hindu</span></span>
+          </div>
+          <div class="evidence has-image reveal">
+            <img src="assets/shubhrastha-abhishek.jpg" alt="Abhishek Sharma at the CSDS report launch" loading="lazy">
+            <span class="evidence-label"><span>Launch moment</span><span>CSDS</span></span>
+          </div>
+          <div class="evidence has-image reveal">
+            <img src="assets/sanjay-byline.jpg" alt="The Hindu byline image with Prof. Sanjay Kumar and Abhishek Sharma" loading="lazy">
+            <span class="evidence-label"><span>Byline archive</span><span>Editorial</span></span>
+          </div>
+          <div class="evidence has-image reveal">
+            <img src="assets/constitution-club-report.jpg" alt="Abhishek Sharma holding the CSDS digital campaign report at Constitution Club of India" loading="lazy">
+            <span class="evidence-label"><span>Report release</span><span>CSDS</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="research">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">02 - Research Exposure</div>
+        <h2 class="section-title reveal">Collaborators<br>&amp; Mentors</h2>
+        <p class="section-intro reveal">
+          This section is designed to signal more than affiliation. It shows the research rooms, political offices, scholars, journalists, public policy teams, and field-facing projects that shaped the way Abhishek works.
+        </p>
+
+        <div class="people-grid">
+          <article class="person-card reveal">
+            <div class="avatar"><img src="assets/abhishek-dutt.jpg" alt="Abhishek Dutt" loading="lazy"></div>
+            <h3 class="person-name">Abhishek Dutt</h3>
+            <p class="person-role">AICC Secretary in Karnataka.</p>
+            <p class="person-context">Current office</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar"><img src="assets/sanjay-byline.jpg" alt="Prof. Sanjay Kumar" loading="lazy" style="object-position: center top;"></div>
+            <h3 class="person-name">Prof. Sanjay Kumar</h3>
+            <p class="person-role">Director, Lokniti-CSDS and one of India's leading psephologists. Research supervision and co-authorship on digital democracy and electoral communication.</p>
+            <p class="person-context">CSDS - Research mentor</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar"><img src="assets/shubhrastha-abhishek.jpg" alt="Prof. Aditi Singh with Abhishek Sharma" loading="lazy" style="object-position: 18% 42%;"></div>
+            <h3 class="person-name">Prof. Aditi Singh</h3>
+            <p class="person-role">Researcher at CSDS and PhD candidate at the National University of Singapore. Supervisor of the CSDS digital election project.</p>
+            <p class="person-context">CSDS - Project supervisor</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar"><img src="assets/christophe-jaffrelot.jpg" alt="Prof. Christophe Jaffrelot" loading="lazy"></div>
+            <h3 class="person-name">Prof. Christophe Jaffrelot</h3>
+            <p class="person-role">Senior Research Fellow, CERI-Sciences Po; Professor, King's College London. Co-author on public opinion and Indian politics for The Wire.</p>
+            <p class="person-context">Co-author - The Wire</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar"><img src="assets/aditi-singh.jpg" alt="Ruchi Gupta" loading="lazy"></div>
+            <h3 class="person-name">Ruchi Gupta</h3>
+            <p class="person-role">Executive Director, Future of India Foundation. Public policy leader working on democratic governance, institutional reform, political strategy, and youth opportunity.</p>
+            <p class="person-context">FoIF - Co-author</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar">VG</div>
+            <h3 class="person-name">Vandita Gupta</h3>
+            <p class="person-role">Policy researcher and alumna of the University of Edinburgh. Co-author on youth employment, parliamentary questions, and digital election writing.</p>
+            <p class="person-context">Co-author - FoIF and The Hindu</p>
+          </article>
+
+          <article class="person-card reveal">
+            <div class="avatar">DD</div>
+            <h3 class="person-name">Deshdeep Dhankhar</h3>
+            <p class="person-role">PhD scholar at the University of California, USA. Part of the wider academic network around political science, research training, and comparative politics.</p>
+            <p class="person-context">Academic network - UC</p>
+          </article>
+        </div>
+
+        <div class="place-grid">
+          <article class="place-card reveal">
+            <span class="tag express">Political Office</span>
+            <h3 class="card-title">Office of Abhishek Dutt</h3>
+            <p class="card-copy">Current role leading a team of researchers and interns, managing weekly targets, stakeholder consultations, recruitment, research proposals, election briefs, speech inputs, RTIs, and campaign strategy documents.</p>
+            <div class="chip-row">
+              <span class="chip">Current role</span>
+              <span class="chip">Research leadership</span>
+              <span class="chip">Political intelligence</span>
+            </div>
+          </article>
+
+          <article class="place-card reveal">
+            <span class="tag csds">Think Tank</span>
+            <h3 class="card-title">Lokniti-Centre for the Study of Developing Societies</h3>
+            <p class="card-copy">Digital election studies during the 2024 Lok Sabha election under Prof. Sanjay Kumar. The work culminated in a national report on digital political communication and multiple public-facing findings in The Hindu.</p>
+            <div class="chip-row">
+              <span class="chip">Digital campaigns</span>
+              <span class="chip">Survey research</span>
+              <span class="chip">Election data</span>
+            </div>
+          </article>
+
+          <article class="place-card reveal">
+            <span class="tag foif">Policy Foundation</span>
+            <h3 class="card-title">Future of India Foundation</h3>
+            <p class="card-copy">Co-led the Parliamentary Research Program, coordinated a large cohort of interns, and contributed to a report on youth employment based on 60,000+ parliamentary questions.</p>
+            <div class="chip-row">
+              <span class="chip">Youth employment</span>
+              <span class="chip">Parliament</span>
+              <span class="chip">Policy institute engagement</span>
+            </div>
+          </article>
+
+          <article class="place-card reveal">
+            <span class="tag scroll">Exchange</span>
+            <h3 class="card-title">University of Melbourne x University of Delhi</h3>
+            <p class="card-copy">Selected as one of nine students from a pool of 600+ for the Universitas 21 exchange program focused on security, development, and comparative academic collaboration.</p>
+            <div class="chip-row">
+              <span class="chip">1 of 9</span>
+              <span class="chip">600+ pool</span>
+              <span class="chip">Security and development</span>
+            </div>
+          </article>
+
+          <article class="place-card reveal">
+            <span class="tag hindu">National Media</span>
+            <h3 class="card-title">The Hindu, The Wire, Indian Express, Scroll</h3>
+            <p class="card-copy">Editorial and analytical writing across digital democracy, voter behaviour, political advertising, campaign finance, language policy, and parliamentary attention to youth employment.</p>
+            <div class="chip-row">
+              <span class="chip">Editorial writing</span>
+              <span class="chip">Public scholarship</span>
+              <span class="chip">Data storytelling</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="experience-strip reveal" aria-label="Experience timeline">
+          <div class="experience-step"><span>May 2026-now</span><strong>Head of Research, Office of Abhishek Dutt</strong><p>Team leadership, proposal pipeline, consultations, and political research systems.</p></div>
+          <div class="experience-step"><span>Mar 2024-Jul 2025</span><strong>Researcher, CSDS</strong><p>Digital election studies and national report on the 2024 Lok Sabha campaign.</p></div>
+          <div class="experience-step"><span>Feb-May 2025</span><strong>Research Associate, FoIF</strong><p>Parliamentary questions, youth employment, and policy intern coordination.</p></div>
+          <div class="experience-step"><span>2023</span><strong>Intern, IISPPR</strong><p>Early public policy research training and exposure to policy writing workflows.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="credentials">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">03 - Credentials</div>
+        <h2 class="section-title reveal">Education &amp;<br>Recognition</h2>
+        <p class="section-intro reveal">
+          The credentials section keeps the formal record compact: education, exchange selection, parliamentary training, and national science recognition before the political research career accelerated.
+        </p>
+
+        <div class="credential-grid">
+          <article class="credential-card reveal">
+            <span class="tag express">Education</span>
+            <h3 class="card-title">Academic Formation</h3>
+            <div class="credential-list">
+              <div class="credential-row">
+                <span class="credential-year">2023-25</span>
+                <p class="credential-text"><strong>M.A. in Political Science</strong><span>Department of Political Science, University of Delhi</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2025</span>
+                <p class="credential-text"><strong>Universitas 21 Exchange Program</strong><span>University of Melbourne x University of Delhi. Selected as 1 of 9 from 600+ students.</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2023</span>
+                <p class="credential-text"><strong>Basic Certificate in Parliamentary Questions</strong><span>Institute of Constitutional and Parliamentary Studies</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2017-20</span>
+                <p class="credential-text"><strong>Bachelor of Arts</strong><span>University of Delhi</span></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="credential-card reveal">
+            <span class="tag csds">Recognition</span>
+            <h3 class="card-title">Awards and Milestones</h3>
+            <div class="credential-list">
+              <div class="credential-row">
+                <span class="credential-year">2026</span>
+                <p class="credential-text"><strong>Head of Research</strong><span>Office of Abhishek Dutt, National Secretary, AICC and Co-Incharge, Karnataka</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2025</span>
+                <p class="credential-text"><strong>Lead contribution to CSDS digital politics report</strong><span>Report launched at the Constitution Club of India</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2024</span>
+                <p class="credential-text"><strong>Lead editorial in The Hindu</strong><span>Co-authored with Prof. Sanjay Kumar on digital democracy</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2018</span>
+                <p class="credential-text"><strong>National Child Scientist</strong><span>25th National Children's Science Congress, NCSTC, Department of Science and Technology, Government of India</span></p>
+              </div>
+              <div class="credential-row">
+                <span class="credential-year">2015-16</span>
+                <p class="credential-text"><strong>National Children's Science Congress and MHRD recognition</strong><span>Certificates of appreciation from national-level science and education bodies</span></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="pipeline">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">04 - Research Pipeline</div>
+        <h2 class="section-title reveal">Research<br>Pipeline</h2>
+        <p class="section-intro reveal">
+          The pipeline is where the portfolio stops being only a record of past work. It signals the intellectual agenda: state elections, platform politics, political timing, voter response, and municipal governance data.
+        </p>
+
+        <div class="pipeline-note reveal">
+          <span class="pulse" aria-hidden="true"></span>
+          <p>Open to research collaborations, data partnerships, field support, writing commissions, fellowships, and institutional homes for these projects.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <p class="project-index">Project 01</p>
+            <h3 class="card-title">Social Media and News Discourse at State Election Level</h3>
+            <p class="card-copy">A candidate- and constituency-level study of social media activity during state and assembly elections, mapped against news narratives to understand how political stories travel, mutate, and diverge across constituencies.</p>
+            <div class="chip-row">
+              <span class="chip">In development</span>
+              <span class="chip">State elections</span>
+              <span class="chip">Platform analysis</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <p class="project-index">Project 02</p>
+            <h3 class="card-title">The Electoral Clock: BJP's Political Timing Strategy, 2014-2029</h3>
+            <p class="card-copy">A structured framework mapping major political decisions against election timelines. The working hypothesis is that high-appeal, low-risk decisions cluster close to elections while controversial moves are made earlier to allow recovery.</p>
+            <div class="chip-row">
+              <span class="chip">Framework design</span>
+              <span class="chip">Political timing</span>
+              <span class="chip">Predictive lens</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <p class="project-index">Project 03</p>
+            <h3 class="card-title">Electoral Timing and Voter Response</h3>
+            <p class="card-copy">A second layer to the Electoral Clock project, connecting voter behaviour data, survey evidence, and socioeconomic indicators to test whether timing strategies shape outcomes across different regions and contexts.</p>
+            <div class="chip-row">
+              <span class="chip">Early stage</span>
+              <span class="chip">Survey evidence</span>
+              <span class="chip">Voter behaviour</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <p class="project-index">Project 04</p>
+            <h3 class="card-title">MCD Ward Governance Scorecard</h3>
+            <p class="card-copy">A data-driven audit of Delhi municipal wards using public datasets, RTIs, and a pilot across 10-15 wards. The work begins with a data gap analysis that shapes the RTI strategy and scorecard design.</p>
+            <div class="chip-row">
+              <span class="chip">In development</span>
+              <span class="chip">Delhi governance</span>
+              <span class="chip">RTI strategy</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="moments">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">05 - Key Moments</div>
+        <h2 class="section-title reveal">Key<br>Moments</h2>
+        <p class="section-intro reveal">
+          This is where report release photographs, screenshots of praise, byline images, university exchange pictures, and high-engagement LinkedIn posts can live without breaking the editorial seriousness of the site.
+        </p>
+
+        <div class="moments-grid">
+          <article class="moment launch-highlight has-image reveal">
+            <img src="assets/preview.webp" alt="CSDS report launch panel for digital campaign strategies" loading="lazy">
+            <div class="moment-caption">
+              <span>Constitution Club of India - Aug 2025</span>
+              <strong>CSDS report release on digital campaign strategies</strong>
+              <p>A horizontal highlight from the launch, keeping the full panel and the report title visible.</p>
+            </div>
+          </article>
+
+          <article class="moment has-image reveal">
+            <img src="assets/u21-exchange.jpg" alt="Universitas 21 exchange cohort lunch" loading="lazy">
+            <div class="moment-caption">
+              <span>University of Melbourne x University of Delhi</span>
+              <strong>Universitas 21 exchange cohort</strong>
+              <p>Selected as one of nine students from a pool of 600+ for cross-continental academic collaboration.</p>
+            </div>
+          </article>
+
+          <article class="moment has-image reveal">
+            <img src="assets/reader-reactions.jpg" alt="Collage of reader reactions to Abhishek Sharma's articles" loading="lazy">
+            <div class="moment-caption">
+              <span>The Hindu</span>
+              <strong>Editorial bylines and reader response</strong>
+              <p>Reader messages, article screenshots, and responses to writing on data, elections, and democracy.</p>
+            </div>
+          </article>
+
+          <article class="moment has-image reveal">
+            <img src="assets/constitution-club-report.jpg" alt="Abhishek Sharma holding the CSDS report at Constitution Club of India" loading="lazy">
+            <div class="moment-caption">
+              <span>Constitution Club of India</span>
+              <strong>Holding the first major report</strong>
+              <p>A personal marker from the CSDS digital political communication report release.</p>
+            </div>
+          </article>
+
+          <article class="moment has-image reveal">
+            <img src="assets/shubhrastha-abhishek.jpg" alt="Abhishek Sharma with Prof. Aditi Singh at the CSDS report launch" loading="lazy">
+            <div class="moment-caption">
+              <span>CSDS report launch</span>
+              <strong>With Prof. Aditi Singh</strong>
+              <p>A project-supervision and launch moment from the CSDS digital election study.</p>
+            </div>
+          </article>
+
+          <article class="moment contain has-image reveal">
+            <img src="assets/sanjay-byline.jpg" alt="The Hindu byline with Prof. Sanjay Kumar and Abhishek Sharma" loading="lazy" style="object-position: center top;">
+            <div class="moment-caption">
+              <span>The Hindu</span>
+              <strong>Byline with Prof. Sanjay Kumar</strong>
+              <p>A visible trace of the editorial work emerging from the Lokniti-CSDS research period.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">06 - Contact</div>
+        <div class="contact-grid">
+          <div>
+            <h2 class="contact-title reveal">Let's talk <em>politics.</em></h2>
+            <p class="contact-copy reveal">Available for research collaborations, policy consulting, writing commissions, fellowships, media queries, and academic opportunities.</p>
+            <div class="contact-links reveal">
+              <a class="contact-link" href="mailto:sharmaabhi5678.as@gmail.com">
+                <span>Email</span>
+                <strong>sharmaabhi5678.as@gmail.com</strong>
+              </a>
+              <a class="contact-link" href="https://www.linkedin.com/in/contactabhisheksharma/" target="_blank" rel="noreferrer">
+                <span>LinkedIn</span>
+                <strong>/contactabhisheksharma</strong>
+              </a>
+              <a class="contact-link" href="https://twitter.com/Abhish1001" target="_blank" rel="noreferrer">
+                <span>X / Twitter</span>
+                <strong>@Abhish1001</strong>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <span class="tag foif">Collaboration Desk</span>
+            <h3 class="card-title">Start a conversation</h3>
+            <p class="card-copy">A short message opens as an email draft, keeping the site static and easy to host.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="org">Organisation</label>
+                <input id="org" name="org" type="text" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="type">Type</label>
+                <select id="type" name="type" required>
+                  <option value="">Select one</option>
+                  <option>Research Collaboration</option>
+                  <option>Writing Commission</option>
+                  <option>Policy Consulting</option>
+                  <option>Academic or Fellowship Opportunity</option>
+                  <option>Media Query</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+            </div>
+            <p class="form-error" id="formError">Please fill in name, email, type, and message.</p>
+            <button class="button" type="submit">Prepare email</button>
+            <p class="form-ok" id="formOk">Email draft prepared.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Abhishek Sharma</span>
+    <span>Political Researcher - Electoral Analyst - Writer</span>
+  </footer>
+
+  <script>
+    const topbar = document.getElementById("topbar");
+    const archiveSearch = document.getElementById("archiveSearch");
+    const archiveList = document.getElementById("archiveList");
+    const archiveEmpty = document.getElementById("archiveEmpty");
+    const filters = Array.from(document.querySelectorAll(".filter"));
+    const publications = Array.from(document.querySelectorAll(".pub"));
+
+    window.addEventListener("scroll", () => {
+      topbar.classList.toggle("is-scrolled", window.scrollY > 40);
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -36px 0px" });
+
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+    let activeFilter = "all";
+
+    function applyArchiveFilter() {
+      const query = archiveSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      publications.forEach((pub) => {
+        const outlet = pub.dataset.outlet;
+        const kind = pub.dataset.kind;
+        const haystack = pub.dataset.search || "";
+        const matchesSearch = !query || haystack.includes(query);
+        const matchesFilter =
+          activeFilter === "all" ||
+          activeFilter === kind ||
+          activeFilter === outlet ||
+          (activeFilter === "the-hindu" && outlet === "the-hindu");
+
+        const isVisible = matchesSearch && matchesFilter;
+        pub.style.display = isVisible ? "grid" : "none";
+        if (isVisible) visibleCount += 1;
+      });
+
+      archiveEmpty.style.display = visibleCount ? "none" : "block";
+      archiveList.style.borderBottom = visibleCount ? "0" : "1px solid var(--line)";
+    }
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        filters.forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+        activeFilter = button.dataset.filter;
+        applyArchiveFilter();
+      });
+    });
+
+    archiveSearch.addEventListener("input", applyArchiveFilter);
+
+    const contactForm = document.getElementById("contactForm");
+    const formError = document.getElementById("formError");
+    const formOk = document.getElementById("formOk");
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(contactForm);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const org = String(formData.get("org") || "").trim() || "Not specified";
+      const type = String(formData.get("type") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+
+      if (!name || !email || !type || !message) {
+        formError.style.display = "block";
+        formOk.style.display = "none";
+        return;
+      }
+
+      formError.style.display = "none";
+      const subject = encodeURIComponent("[Portfolio] " + type + " - " + name);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Organisation: " + org + "\n" +
+        "Type: " + type + "\n\n" +
+        message
+      );
+      window.location.href = "mailto:sharmaabhi5678.as@gmail.com?subject=" + subject + "&body=" + body;
+      formOk.style.display = "block";
+    });
+
+    function setupAtlas() {
+      const canvas = document.getElementById("atlas");
+      const ctx = canvas.getContext("2d");
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let width = 0;
+      let height = 0;
+      let points = [];
+      let tick = 0;
+
+      function resize() {
+        const ratio = window.devicePixelRatio || 1;
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = Math.floor(width * ratio);
+        canvas.height = Math.floor(height * ratio);
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        points = Array.from({ length: Math.max(42, Math.floor(width / 18)) }, (_, index) => {
+          const column = index % 12;
+          const row = Math.floor(index / 12);
+          return {
+            x: width * (0.48 + column * 0.042 + (Math.random() - 0.5) * 0.035),
+            y: height * (0.13 + row * 0.078 + (Math.random() - 0.5) * 0.04),
+            r: 1.2 + Math.random() * 2.8,
+            heat: Math.random()
+          };
+        });
+      }
+
+      function draw() {
+        tick += 0.006;
+        ctx.clearRect(0, 0, width, height);
+
+        const grd = ctx.createLinearGradient(width * 0.45, 0, width, height);
+        grd.addColorStop(0, "rgba(214, 161, 74, 0.08)");
+        grd.addColorStop(0.5, "rgba(101, 185, 173, 0.08)");
+        grd.addColorStop(1, "rgba(200, 109, 79, 0.06)");
+        ctx.fillStyle = grd;
+        ctx.fillRect(width * 0.48, height * 0.04, width * 0.5, height * 0.78);
+
+        ctx.lineWidth = 1;
+        for (let i = 0; i < points.length; i += 1) {
+          const a = points[i];
+          for (let j = i + 1; j < points.length; j += 13) {
+            const b = points[j];
+            const distance = Math.hypot(a.x - b.x, a.y - b.y);
+            if (distance < 150) {
+              ctx.strokeStyle = "rgba(244, 239, 229, " + (0.018 + (150 - distance) / 9000) + ")";
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        points.forEach((point, index) => {
+          const glow = Math.sin(tick * 3 + index) * 0.5 + 0.5;
+          const color = point.heat > 0.66 ? "214, 161, 74" : point.heat > 0.33 ? "101, 185, 173" : "200, 109, 79";
+          ctx.beginPath();
+          ctx.fillStyle = "rgba(" + color + ", " + (0.26 + glow * 0.36) + ")";
+          ctx.arc(point.x, point.y, point.r + glow * 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        ctx.strokeStyle = "rgba(214, 161, 74, 0.24)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(width * 0.52, height * 0.18);
+        ctx.bezierCurveTo(width * 0.7, height * 0.06, width * 0.9, height * 0.26, width * 0.82, height * 0.48);
+        ctx.bezierCurveTo(width * 0.74, height * 0.68, width * 0.56, height * 0.58, width * 0.55, height * 0.76);
+        ctx.stroke();
+
+        if (!prefersReduced) requestAnimationFrame(draw);
+      }
+
+      resize();
+      draw();
+      window.addEventListener("resize", resize);
+    }
+
+    setupAtlas();
+  </script>
+</body>
+</html>
