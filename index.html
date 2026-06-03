@@ -22,6 +22,9 @@
       --rust: #c86d4f;
       --green: #93b56b;
       --violet: #9c8ec5;
+      --blue: #7aa7d9;
+      --plum: #b678a3;
+      --copper: #d18462;
       --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
     }
 
@@ -38,14 +41,50 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 76% 6%, rgba(101, 185, 173, 0.13), transparent 32rem),
-        radial-gradient(circle at 9% 28%, rgba(200, 109, 79, 0.10), transparent 30rem),
-        linear-gradient(180deg, #0d0f0e 0%, #111311 42%, #0d0f0e 100%);
+        radial-gradient(circle at 76% 6%, rgba(122, 167, 217, 0.14), transparent 32rem),
+        radial-gradient(circle at 9% 28%, rgba(200, 109, 79, 0.11), transparent 30rem),
+        radial-gradient(circle at 88% 78%, rgba(147, 181, 107, 0.10), transparent 26rem),
+        linear-gradient(180deg, #0d0f0e 0%, #121511 42%, #0b0d0c 100%);
       color: var(--paper);
       font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
       font-size: 18px;
       line-height: 1.72;
       overflow-x: hidden;
+    }
+
+    body[data-page="research"] {
+      background:
+        radial-gradient(circle at 78% 8%, rgba(101, 185, 173, 0.18), transparent 31rem),
+        radial-gradient(circle at 12% 34%, rgba(214, 161, 74, 0.10), transparent 26rem),
+        linear-gradient(180deg, #0b100f 0%, #101716 48%, #0b0d0c 100%);
+    }
+
+    body[data-page="writing"] {
+      background:
+        radial-gradient(circle at 80% 8%, rgba(200, 109, 79, 0.18), transparent 31rem),
+        radial-gradient(circle at 8% 48%, rgba(214, 161, 74, 0.10), transparent 26rem),
+        linear-gradient(180deg, #100d0c 0%, #151210 48%, #0b0d0c 100%);
+    }
+
+    body[data-page="dashboards"] {
+      background:
+        radial-gradient(circle at 78% 8%, rgba(147, 181, 107, 0.17), transparent 31rem),
+        radial-gradient(circle at 10% 42%, rgba(122, 167, 217, 0.10), transparent 26rem),
+        linear-gradient(180deg, #0d100b 0%, #121610 48%, #0b0d0c 100%);
+    }
+
+    body[data-page="about"] {
+      background:
+        radial-gradient(circle at 78% 8%, rgba(156, 142, 197, 0.17), transparent 31rem),
+        radial-gradient(circle at 10% 42%, rgba(214, 161, 74, 0.10), transparent 26rem),
+        linear-gradient(180deg, #0f0d12 0%, #15131a 48%, #0b0d0c 100%);
+    }
+
+    body[data-page="newsletter"] {
+      background:
+        radial-gradient(circle at 78% 8%, rgba(122, 167, 217, 0.17), transparent 31rem),
+        radial-gradient(circle at 10% 42%, rgba(101, 185, 173, 0.10), transparent 26rem),
+        linear-gradient(180deg, #0b0f12 0%, #10141a 48%, #0b0d0c 100%);
     }
 
     body::after {
@@ -104,10 +143,101 @@
       padding: 96px 0;
       border-top: 1px solid var(--line);
       scroll-margin-top: 96px;
+      overflow: hidden;
+    }
+
+    .section > .wrap {
+      position: relative;
+      z-index: 2;
     }
 
     .section.alt {
       background: rgba(244, 239, 229, 0.025);
+    }
+
+    #research,
+    #writing,
+    #dashboards,
+    #newsletter,
+    #about,
+    #contact {
+      padding-top: 132px;
+    }
+
+    #research::before,
+    #writing::before,
+    #dashboards::before,
+    #newsletter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      background:
+        radial-gradient(circle at 84% 10%, color-mix(in srgb, var(--page-accent, var(--gold)) 24%, transparent), transparent 24rem),
+        linear-gradient(110deg, rgba(13, 15, 14, 0.96), rgba(13, 15, 14, 0.7));
+    }
+
+    #writing::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: screen;
+      filter: saturate(0.75) contrast(0.92);
+    }
+
+    #writing::after {
+      opacity: 0.08;
+      background:
+        linear-gradient(90deg, rgba(244, 239, 229, 0.18) 1px, transparent 1px),
+        repeating-linear-gradient(180deg, transparent 0, transparent 28px, rgba(244, 239, 229, 0.08) 29px, transparent 30px);
+      background-size: 96px 100%, 100% 30px;
+      mix-blend-mode: normal;
+    }
+
+    .page-section {
+      animation: pageRise 0.46s ease both;
+    }
+
+    .page-section[hidden] {
+      display: none !important;
+    }
+
+    .page-section[data-page="research"] {
+      --page-accent: var(--teal);
+    }
+
+    .page-section[data-page="writing"] {
+      --page-accent: var(--rust);
+    }
+
+    .page-section[data-page="dashboards"] {
+      --page-accent: var(--green);
+    }
+
+    .page-section[data-page="newsletter"] {
+      --page-accent: var(--blue);
+    }
+
+    .page-section[data-page="about"] {
+      --page-accent: var(--violet);
+    }
+
+    @keyframes pageRise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .section-kicker {
@@ -188,33 +318,67 @@
     }
 
     .nav-links a {
+      --tab-accent: var(--gold);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 34px;
       padding: 6px 11px;
-      border: 1px solid var(--line);
+      border: 1px solid color-mix(in srgb, var(--tab-accent) 24%, transparent);
       border-radius: 999px;
       color: var(--muted);
-      background: rgba(244, 239, 229, 0.035);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--tab-accent) 9%, transparent), rgba(244, 239, 229, 0.025));
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
       font-size: 0.72rem;
       text-transform: uppercase;
       white-space: nowrap;
-      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      inset: auto 12px 4px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--tab-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
     }
 
     .nav-links a:hover {
-      color: var(--gold);
-      background: rgba(214, 161, 74, 0.10);
-      border-color: rgba(214, 161, 74, 0.38);
+      color: var(--paper);
+      background: color-mix(in srgb, var(--tab-accent) 15%, rgba(13, 15, 14, 0.72));
+      border-color: color-mix(in srgb, var(--tab-accent) 58%, transparent);
+      transform: translateY(-1px);
     }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.is-active {
+      color: var(--paper);
+      border-color: color-mix(in srgb, var(--tab-accent) 68%, transparent);
+      box-shadow: 0 0 20px color-mix(in srgb, var(--tab-accent) 18%, transparent);
+    }
+
+    .nav-links a[data-accent="gold"] { --tab-accent: var(--gold); }
+    .nav-links a[data-accent="teal"] { --tab-accent: var(--teal); }
+    .nav-links a[data-accent="rust"] { --tab-accent: var(--rust); }
+    .nav-links a[data-accent="green"] { --tab-accent: var(--green); }
+    .nav-links a[data-accent="violet"] { --tab-accent: var(--violet); }
+    .nav-links a[data-accent="blue"] { --tab-accent: var(--blue); }
 
     .hero {
       position: relative;
       min-height: 92vh;
-      display: grid;
-      align-items: center;
+      display: block;
       overflow: hidden;
       padding: 124px 0 72px;
     }
@@ -235,6 +399,16 @@
         linear-gradient(90deg, rgba(13, 15, 14, 0.98) 0%, rgba(13, 15, 14, 0.72) 52%, rgba(13, 15, 14, 0.35) 100%),
         linear-gradient(180deg, transparent 0%, rgba(13, 15, 14, 0.88) 96%);
       z-index: 1;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(320px, 0.66fr);
+      gap: 42px;
+      align-items: center;
+      min-height: 62vh;
     }
 
     .hero-content {
@@ -270,6 +444,24 @@
     .hero-interest strong {
       color: var(--gold);
       font-weight: 600;
+    }
+
+    .interest-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.05em;
+      margin: 0 4px;
+      vertical-align: -0.12em;
+      background: var(--gold);
+      animation: blinkCursor 0.9s step-end infinite;
+    }
+
+    .hero-interest-tail {
+      color: var(--muted);
+    }
+
+    @keyframes blinkCursor {
+      50% { opacity: 0; }
     }
 
     .hero-strip {
@@ -329,6 +521,123 @@
       background: rgba(244, 239, 229, 0.04);
     }
 
+    .hero-media {
+      position: relative;
+      min-height: 560px;
+      border: 0;
+      border-radius: 0;
+      overflow: hidden;
+      background: transparent;
+      box-shadow: none;
+      isolation: isolate;
+      mask-image: linear-gradient(180deg, transparent 0%, black 9%, black 88%, transparent 100%);
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(13, 15, 14, 0.02), rgba(13, 15, 14, 0.72)),
+        linear-gradient(90deg, rgba(13, 15, 14, 0.22), transparent 56%);
+      pointer-events: none;
+    }
+
+    .hero-moment-window {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .hero-moment-track {
+      display: grid;
+      gap: 14px;
+      animation: verticalMoments 42s linear infinite;
+      will-change: transform;
+    }
+
+    .hero-moment-track:hover {
+      animation-play-state: paused;
+    }
+
+    .hero-moment {
+      min-height: 390px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      overflow: hidden;
+      border: 1px solid rgba(244, 239, 229, 0.08);
+      border-radius: 8px;
+      background: rgba(13, 15, 14, 0.28);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-moment img {
+      width: 100%;
+      height: 320px;
+      display: block;
+      object-fit: contain;
+      background:
+        linear-gradient(135deg, rgba(244, 239, 229, 0.025), rgba(13, 15, 14, 0.30)),
+        rgba(11, 13, 12, 0.64);
+      filter: saturate(0.96) contrast(0.98);
+    }
+
+    .hero-moment-caption {
+      padding: 12px 14px 14px;
+      color: var(--paper);
+      background: rgba(13, 15, 14, 0.58);
+      border-top: 1px solid rgba(244, 239, 229, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-moment-caption span {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+    }
+
+    .hero-moment-caption strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.18;
+    }
+
+    @keyframes verticalMoments {
+      from { transform: translateY(0); }
+      to { transform: translateY(calc(-50% - 7px)); }
+    }
+
+    .hero-media-badge {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--paper);
+      opacity: 0.86;
+    }
+
+    .hero-media-badge strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.12;
+      margin-top: 6px;
+    }
+
+    .hero-media-badge span {
+      color: var(--gold);
+    }
+
     .hero-metrics {
       position: relative;
       z-index: 2;
@@ -359,6 +668,354 @@
       color: var(--quiet);
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
       font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr);
+      gap: 26px;
+      align-items: start;
+      margin-top: 42px;
+    }
+
+    .feature-copy {
+      position: sticky;
+      top: 104px;
+    }
+
+    .feature-copy h3,
+    .project-preview h3,
+    .media-panel h3,
+    .newsletter-panel h3,
+    .framework-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-copy p,
+    .project-preview p,
+    .media-panel p,
+    .newsletter-panel p,
+    .framework-card p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .feature-carousel {
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .feature-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .feature-card {
+      flex: 0 0 100%;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 239, 229, 0.10);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(244, 239, 229, 0.045), rgba(244, 239, 229, 0.015)),
+        rgba(13, 15, 14, 0.66);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(0.96);
+    }
+
+    .feature-card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 32px;
+      background:
+        radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--feature-accent, var(--gold)) 14%, transparent), transparent 22rem),
+        linear-gradient(180deg, rgba(13, 15, 14, 0.14), rgba(13, 15, 14, 0.42));
+    }
+
+    .feature-card-body h3 {
+      font-size: 2.25rem;
+      margin: 12px 0 12px;
+    }
+
+    .feature-card-body p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .feature-controls {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+
+    .feature-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(244, 239, 229, 0.22);
+      color: var(--paper);
+      background: rgba(13, 15, 14, 0.58);
+      backdrop-filter: blur(12px);
+    }
+
+    .project-preview-grid,
+    .media-grid,
+    .research-framework,
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .project-preview,
+    .media-panel,
+    .newsletter-panel,
+    .framework-card,
+    .dashboard-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--panel-accent, var(--gold)) 13%, transparent), transparent 18rem),
+        rgba(244, 239, 229, 0.04);
+      padding: 24px;
+      min-height: 210px;
+    }
+
+    .project-preview::before,
+    .framework-card::before,
+    .dashboard-card::before,
+    .newsletter-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, var(--panel-accent, var(--gold)), transparent);
+      opacity: 0.9;
+    }
+
+    .framework-card,
+    .dashboard-card {
+      min-height: 250px;
+    }
+
+    .framework-card h3,
+    .dashboard-card h3 {
+      color: var(--paper);
+    }
+
+    .research-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .research-tab {
+      min-height: 44px;
+      padding: 9px 15px;
+      border: 1px solid color-mix(in srgb, var(--research-accent, var(--teal)) 34%, transparent);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(244, 239, 229, 0.035);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .research-tab:hover,
+    .research-tab.is-active {
+      color: var(--paper);
+      border-color: color-mix(in srgb, var(--research-accent, var(--teal)) 72%, transparent);
+      background:
+        radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--research-accent, var(--teal)) 18%, transparent), transparent 12rem),
+        rgba(244, 239, 229, 0.065);
+      transform: translateY(-1px);
+    }
+
+    .research-panels {
+      margin-top: 18px;
+      border: 1px solid rgba(101, 185, 173, 0.24);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(244, 239, 229, 0.055), rgba(244, 239, 229, 0.02)),
+        rgba(13, 15, 14, 0.52);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .research-panel {
+      display: none;
+      grid-template-columns: minmax(0, 0.76fr) minmax(260px, 0.44fr);
+      gap: 28px;
+      min-height: 360px;
+      padding: 30px;
+      background:
+        radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--panel-accent, var(--teal)) 16%, transparent), transparent 24rem),
+        repeating-linear-gradient(90deg, rgba(244, 239, 229, 0.025) 0 1px, transparent 1px 74px);
+    }
+
+    .research-panel.is-active {
+      display: grid;
+      animation: pageRise 0.34s ease both;
+    }
+
+    .research-panel h3 {
+      font-size: 2.15rem;
+      margin-bottom: 14px;
+    }
+
+    .research-panel p {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .research-panel-list {
+      display: grid;
+      gap: 10px;
+      align-self: end;
+    }
+
+    .research-panel-list span {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid rgba(244, 239, 229, 0.09);
+      border-radius: 6px;
+      color: var(--paper);
+      background: rgba(244, 239, 229, 0.04);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .writing-board {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.74fr) minmax(0, 1.26fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 40px;
+      border: 1px solid rgba(214, 161, 74, 0.26);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(244, 239, 229, 0.065), rgba(244, 239, 229, 0.025)),
+        rgba(13, 15, 14, 0.72);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    #writing .section-title,
+    #writing .section-intro,
+    #writing .writing-board,
+    #writing .archive-tools,
+    #writing .archive,
+    #writing .impact-grid,
+    #writing .quote-grid,
+    #writing .evidence-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .writing-board-copy {
+      padding: 28px;
+      align-self: end;
+    }
+
+    .writing-board-copy h3 {
+      font-size: 1.85rem;
+      margin: 12px 0;
+    }
+
+    .writing-board-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .writing-wall {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 1fr);
+      gap: 12px;
+      padding: 14px;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent 0, black 7%, black 93%, transparent 100%);
+    }
+
+    .writing-tile {
+      display: grid;
+      grid-template-rows: 280px auto;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(244, 239, 229, 0.10);
+      border-radius: 6px;
+      background: rgba(13, 15, 14, 0.72);
+      animation: tileFloat 7s ease-in-out infinite;
+    }
+
+    .writing-tile:nth-child(2) { animation-delay: 0.8s; }
+    .writing-tile:nth-child(3) { animation-delay: 1.6s; }
+    .writing-tile:nth-child(4) { animation-delay: 2.4s; }
+
+    .writing-tile img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #f4efe5;
+    }
+
+    .writing-tile span {
+      padding: 10px 12px;
+      color: var(--muted);
+      border-top: 1px solid rgba(244, 239, 229, 0.08);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    @keyframes tileFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .newsletter-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .newsletter-placeholder {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px dashed color-mix(in srgb, var(--teal) 54%, transparent);
+      border-radius: 999px;
+      color: var(--teal);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.74rem;
       text-transform: uppercase;
     }
 
@@ -1166,6 +1823,27 @@
         font-size: 3.4rem;
       }
 
+      .hero-layout,
+      .featured-grid,
+      .feature-card,
+      .newsletter-panel,
+      .writing-board,
+      .research-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media {
+        min-height: 430px;
+      }
+
+      .hero-moment {
+        min-height: 330px;
+      }
+
+      .hero-moment img {
+        height: 248px;
+      }
+
       .pub {
         grid-template-columns: 72px 128px 1fr 44px;
       }
@@ -1180,7 +1858,11 @@
 
       .impact-grid,
       .quote-grid,
-      .hero-metrics {
+      .hero-metrics,
+      .project-preview-grid,
+      .media-grid,
+      .research-framework,
+      .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1231,6 +1913,22 @@
         font-size: 3.45rem;
       }
 
+      .hero-media {
+        min-height: 360px;
+      }
+
+      .hero-moment-window {
+        inset: 10px;
+      }
+
+      .hero-moment {
+        min-height: 300px;
+      }
+
+      .hero-moment img {
+        height: 222px;
+      }
+
       .hero-interest {
         font-size: 1.08rem;
       }
@@ -1272,8 +1970,27 @@
       .quote-grid,
       .hero-metrics,
       .experience-strip,
-      .form-grid {
+      .form-grid,
+      .project-preview-grid,
+      .media-grid,
+      .research-framework,
+      .dashboard-grid,
+      .research-panel {
         grid-template-columns: 1fr;
+      }
+
+      .feature-card-body {
+        padding: 24px;
+      }
+
+      .feature-card-body h3 {
+        font-size: 1.65rem;
+      }
+
+      .writing-wall {
+        grid-auto-columns: minmax(190px, 82vw);
+        overflow-x: auto;
+        mask-image: none;
       }
 
       .contact-link {
@@ -1293,6 +2010,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="stp-dashboard.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TH4N8SFL2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -1310,36 +2028,101 @@
     </a>
     <nav aria-label="Primary navigation">
       <ul class="nav-links">
-        <li><a href="#work">Works</a></li>
-        <li><a href="#research">Collaborations</a></li>
-        <li><a href="#pipeline">Pipeline</a></li>
-        <li><a href="#credentials">Education</a></li>
-        <li><a href="#moments">Moments</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#hero" data-page-target="home" data-accent="gold">Home</a></li>
+        <li><a href="#about" data-page-target="about" data-accent="violet">About</a></li>
+        <li><a href="#research" data-page-target="research" data-accent="teal">Research</a></li>
+        <li><a href="#writing" data-page-target="writing" data-accent="rust">Writing</a></li>
+        <li><a href="#dashboards" data-page-target="dashboards" data-accent="green">Dashboards</a></li>
+        <li><a href="#newsletter" data-page-target="newsletter" data-accent="blue">Newsletter</a></li>
+        <li><a href="#contact" data-page-target="contact" data-accent="gold">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="hero">
+    <section class="hero page-section" id="hero" data-page="home">
       <canvas id="atlas" aria-hidden="true"></canvas>
-      <div class="wrap hero-content">
-        <p class="mono hero-location reveal">Delhi, India - Political Researcher - Writer - Policy Analyst</p>
-        <h1 class="hero-name reveal">Abhishek <span>Sharma</span></h1>
-        <p class="hero-interest reveal">
-          I am interested in <strong>elections, politics, democracy, technology, digital democracy, and digital politics</strong> - especially how data, platforms, campaigns, and institutions now shape public life in India.
-        </p>
-        <div class="hero-strip reveal" aria-label="Selected affiliations and outlets">
-          <span class="hero-pill">Office of Abhishek Dutt</span>
-          <span class="hero-pill">Lokniti-CSDS</span>
-          <span class="hero-pill">The Hindu</span>
-          <span class="hero-pill">The Wire</span>
-          <span class="hero-pill">Indian Express</span>
-          <span class="hero-pill">Scroll</span>
+      <div class="wrap hero-layout">
+        <div class="hero-content">
+          <p class="mono hero-location reveal">Delhi, India - Political Researcher - Writer - Policy Analyst</p>
+          <h1 class="hero-name reveal">Abhishek <span>Sharma</span></h1>
+          <p class="hero-interest reveal">
+            I am interested in <strong id="interestType">elections</strong><span class="interest-cursor" aria-hidden="true"></span><span class="hero-interest-tail"> especially how data, platforms, campaigns, and institutions shape public life in India.</span>
+          </p>
+          <div class="hero-strip reveal" aria-label="Selected affiliations and outlets">
+            <span class="hero-pill">Office of Abhishek Dutt</span>
+            <span class="hero-pill">Lokniti-CSDS</span>
+            <span class="hero-pill">The Hindu</span>
+            <span class="hero-pill">The Wire</span>
+            <span class="hero-pill">Indian Express</span>
+            <span class="hero-pill">Scroll</span>
+          </div>
+          <div class="hero-actions reveal">
+            <a class="button" href="#featured">Start Reading</a>
+            <a class="button secondary" href="#writing">Writing Archive</a>
+          </div>
         </div>
-        <div class="hero-actions reveal">
-          <a class="button" href="#work">View public work</a>
-          <a class="button secondary" href="#research">See research exposure</a>
+        <div class="hero-media reveal" aria-label="Key moments reel">
+          <div class="hero-moment-window">
+            <div class="hero-moment-track">
+              <article class="hero-moment">
+                <img src="assets/featured/report-constitution-club.jpg" alt="Abhishek Sharma holding the CSDS digital campaign report at Constitution Club of India">
+                <div class="hero-moment-caption"><span>Constitution Club</span><strong>Holding the CSDS digital campaign report</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/preview.webp" alt="CSDS report launch panel with invited speakers and researchers">
+                <div class="hero-moment-caption"><span>CSDS Report Launch</span><strong>Panel for Advertisements, Trends, and Targeting Tactics</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/sanjay-byline.jpg" alt="The Hindu byline with Prof. Sanjay Kumar and Abhishek Sharma">
+                <div class="hero-moment-caption"><span>The Hindu</span><strong>Editorial byline with Prof. Sanjay Kumar</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/u21-exchange.jpg" alt="Universitas 21 exchange cohort">
+                <div class="hero-moment-caption"><span>U21 Exchange</span><strong>University of Melbourne x University of Delhi cohort</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/reader-reactions.jpg" alt="Reader reactions and messages responding to Abhishek Sharma's writing">
+                <div class="hero-moment-caption"><span>Reader Response</span><strong>Messages and engagement around published work</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/constitution-club-report.jpg" alt="Abhishek Sharma holding the CSDS report at Constitution Club of India">
+                <div class="hero-moment-caption"><span>Report Release</span><strong>CSDS digital political communication report</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/shubhrastha-abhishek.jpg" alt="Abhishek Sharma with Prof. Aditi Singh at the CSDS report launch">
+                <div class="hero-moment-caption"><span>CSDS Launch</span><strong>With Prof. Aditi Singh</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/featured/report-constitution-club.jpg" alt="Abhishek Sharma holding the CSDS digital campaign report at Constitution Club of India">
+                <div class="hero-moment-caption"><span>Constitution Club</span><strong>Holding the CSDS digital campaign report</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/preview.webp" alt="CSDS report launch panel with invited speakers and researchers">
+                <div class="hero-moment-caption"><span>CSDS Report Launch</span><strong>Panel for Advertisements, Trends, and Targeting Tactics</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/sanjay-byline.jpg" alt="The Hindu byline with Prof. Sanjay Kumar and Abhishek Sharma">
+                <div class="hero-moment-caption"><span>The Hindu</span><strong>Editorial byline with Prof. Sanjay Kumar</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/u21-exchange.jpg" alt="Universitas 21 exchange cohort">
+                <div class="hero-moment-caption"><span>U21 Exchange</span><strong>University of Melbourne x University of Delhi cohort</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/reader-reactions.jpg" alt="Reader reactions and messages responding to Abhishek Sharma's writing">
+                <div class="hero-moment-caption"><span>Reader Response</span><strong>Messages and engagement around published work</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/constitution-club-report.jpg" alt="Abhishek Sharma holding the CSDS report at Constitution Club of India">
+                <div class="hero-moment-caption"><span>Report Release</span><strong>CSDS digital political communication report</strong></div>
+              </article>
+              <article class="hero-moment">
+                <img src="assets/shubhrastha-abhishek.jpg" alt="Abhishek Sharma with Prof. Aditi Singh at the CSDS report launch">
+                <div class="hero-moment-caption"><span>CSDS Launch</span><strong>With Prof. Aditi Singh</strong></div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
       <div class="wrap hero-metrics reveal" aria-label="Profile highlights">
@@ -1350,13 +2133,409 @@
       </div>
     </section>
 
-    <section class="section" id="work">
+    <section class="section page-section" id="featured" data-page="home">
       <div class="wrap">
-        <div class="section-kicker mono reveal">01 - Work Archive</div>
+        <div class="section-kicker mono reveal">Featured Analysis</div>
+        <h2 class="section-title reveal">Writing on elections, data and democracy.</h2>
+        <p class="section-intro reveal">
+          Published work on data governance, digital campaigns, voter behaviour, and democratic accountability.
+        </p>
+
+        <div class="featured-grid reveal">
+          <div class="feature-copy">
+            <h3>Selected work from the public record.</h3>
+            <p>Articles, reports, and policy-facing research that connect political data with democratic accountability.</p>
+          </div>
+          <div class="feature-carousel" aria-label="Featured analysis carousel">
+            <div class="feature-controls">
+              <button class="feature-btn" type="button" id="featurePrev" aria-label="Previous featured analysis">‹</button>
+              <button class="feature-btn" type="button" id="featureNext" aria-label="Next featured analysis">›</button>
+            </div>
+            <div class="feature-track" id="featureTrack">
+              <article class="feature-card" style="--feature-accent: var(--teal)">
+                <img src="assets/featured/elephant-data-room.jpg" alt="The Hindu article titled The elephant in India's data room">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>The Elephant in the Data Room: Why India Must Standardise</h3>
+                  <p>Data standardisation, interoperability, and the governance cost of fragmented public datasets.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+              <article class="feature-card" style="--feature-accent: var(--rust)">
+                <img src="assets/featured/gaps-digital-campaigns.jpg" alt="The Hindu article titled Gaps in regulating digital campaigns">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>Gaps in Regulating Digital Campaigns</h3>
+                  <p>Digital campaign regulation, electoral transparency, and accountability gaps in platform politics.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+              <article class="feature-card" style="--feature-accent: var(--green)">
+                <img src="assets/featured/architects-of-hate.jpg" alt="Article titled Architects of hate">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>Architects of Hate: Who is Fuelling Discord in India's Digital Elections?</h3>
+                  <p>Third-party actors, inflammatory content, and regulatory blind spots in digital elections.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+              <article class="feature-card" style="--feature-accent: var(--violet)">
+                <img src="assets/featured/duality-voter-behaviour.jpg" alt="Article titled Duality - understanding Indian voter behaviour">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>Duality: Understanding Indian Voter Behaviour</h3>
+                  <p>Voter behaviour, democratic change, and the layered nature of electoral decision-making.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+              <article class="feature-card" style="--feature-accent: var(--gold)">
+                <img src="assets/featured/democratic-digital-plugin.jpg" alt="The Hindu editorial titled Democratic engagement with a digital plug-in">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>Democratic Engagement with a Digital Plug-In</h3>
+                  <p>Digital democracy, campaign finance, platformisation, and the changing rulebook of elections.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+              <article class="feature-card" style="--feature-accent: var(--teal)">
+                <img src="assets/featured/joy-fear-anger.jpg" alt="Article titled Joy, fear and anger">
+                <div class="feature-card-body">
+                  <span class="tag hindu">The Hindu</span>
+                  <h3>Joy, Fear and Anger: The BJP and INC's Digital Playbook</h3>
+                  <p>Emotional strategies and voter engagement in the digital age of Indian elections.</p>
+                  <a class="button" href="#writing">Read Article</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-section" id="media" data-page="home">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">Media &amp; Publications</div>
+        <h2 class="section-title reveal">Published across national platforms.</h2>
+        <div class="media-grid">
+          <article class="media-panel reveal" style="--panel-accent: var(--gold)"><span class="tag hindu">The Hindu</span><h3>Editorial and data-led analysis</h3><p>Digital campaigns, voter behaviour, language policy, data governance, and campaign regulation.</p></article>
+          <article class="media-panel reveal" style="--panel-accent: var(--teal)"><span class="tag wire">The Wire</span><h3>Public-facing political analysis</h3><p>Youth employment, social justice, voter priorities, and Indian political behaviour.</p></article>
+          <article class="media-panel reveal" style="--panel-accent: var(--rust)"><span class="tag express">Indian Express</span><h3>Policy and Parliament</h3><p>Parliamentary attention to youth employment and policy questions drawn from public records.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt page-section" id="research" data-page="research">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">Research</div>
+        <h2 class="section-title reveal">Research</h2>
+        <p class="section-intro reveal">A growing archive of public-facing research on Delhi governance, national politics, and digital democracy.</p>
+
+        <div class="research-hub reveal" id="researchHub">
+          <article class="research-category-card" style="--panel-accent: var(--teal)">
+            <span class="tag csds">Delhi</span>
+            <h3>Delhi</h3>
+            <p>Governance, public infrastructure, public services, and political developments in the National Capital Territory.</p>
+            <div class="research-card-meta"><strong>1</strong><span>published project</span></div>
+            <div class="research-featured-project">
+              <span>Featured project</span>
+              <strong>Delhi Sewage Infrastructure Accountability Project</strong>
+            </div>
+            <button class="button research-open" type="button" data-open-research="delhi">Explore Research</button>
+          </article>
+          <article class="research-category-card" style="--panel-accent: var(--gold)">
+            <span class="tag hindu">National Politics</span>
+            <h3>National Politics</h3>
+            <p>Electoral behaviour, Parliament, political strategy, policy attention, and the public record behind national debate.</p>
+            <div class="research-card-meta"><strong>1</strong><span>featured research stream</span></div>
+            <div class="research-featured-project">
+              <span>Featured stream</span>
+              <strong>Parliamentary attention to youth employment</strong>
+            </div>
+            <button class="button research-open" type="button" data-open-research="national">Explore Research</button>
+          </article>
+          <article class="research-category-card" style="--panel-accent: var(--rust)">
+            <span class="tag wire">Digital Democracy</span>
+            <h3>Digital Democracy</h3>
+            <p>Digital campaigning, platform accountability, political advertising, persuasion, and democratic fairness online.</p>
+            <div class="research-card-meta"><strong>1</strong><span>featured research stream</span></div>
+            <div class="research-featured-project">
+              <span>Featured stream</span>
+              <strong>Digital campaign strategies in Indian elections</strong>
+            </div>
+            <button class="button research-open" type="button" data-open-research="digital">Explore Research</button>
+          </article>
+        </div>
+
+        <div class="research-category-view reveal" id="researchCategoryView" hidden>
+          <button class="research-back" type="button" id="researchBack">← Research</button>
+          <div class="research-category-panel" data-research-category="delhi" style="--panel-accent: var(--teal)">
+            <span class="tag csds">Delhi</span>
+            <h3>Delhi</h3>
+            <p>Research on governance, public infrastructure, public services, and political developments in the National Capital Territory.</p>
+            <article class="research-project-row">
+              <div>
+                <span class="mono">Project</span>
+                <h4>Delhi Sewage Infrastructure Accountability Project</h4>
+                <p>An RTI-based analysis of sewage treatment capacity, utilisation, expenditure, and governance gaps across Delhi Jal Board 32 STPs.</p>
+              </div>
+              <div class="research-row-actions">
+                <button class="button" type="button" id="openStpProject">Read Project</button>
+                <a class="button ghost-button" href="#dashboards">Open Dashboard</a>
+              </div>
+            </article>
+          </div>
+          <div class="research-category-panel" data-research-category="national" style="--panel-accent: var(--gold)">
+            <span class="tag hindu">National Politics</span>
+            <h3>National Politics</h3>
+            <p>Research streams on electoral strategy, voter behaviour, parliamentary questions, political timing, leadership narratives, and public policy.</p>
+            <article class="research-project-row">
+              <div>
+                <span class="mono">Research stream</span>
+                <h4>Parliamentary attention to youth employment</h4>
+                <p>Policy-facing analysis drawn from public parliamentary records and published writing on youth opportunity.</p>
+              </div>
+              <a class="button ghost-button" href="#writing">View Writing</a>
+            </article>
+          </div>
+          <div class="research-category-panel" data-research-category="digital" style="--panel-accent: var(--rust)">
+            <span class="tag wire">Digital Democracy</span>
+            <h3>Digital Democracy</h3>
+            <p>Research streams on digital campaigns, political advertising, platform accountability, online persuasion, campaign finance opacity, and regulatory fairness.</p>
+            <article class="research-project-row">
+              <div>
+                <span class="mono">Research stream</span>
+                <h4>Digital campaign strategies in Indian elections</h4>
+                <p>Work on platform politics, third-party campaigners, digital advertising, and the changing rulebook of democratic competition.</p>
+              </div>
+              <a class="button ghost-button" href="#writing">View Writing</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="stp-publication reveal" id="delhi-stp-research" hidden>
+          <button class="research-back" type="button" id="stpProjectBack">← Delhi</button>
+          <section class="stp-project-hero">
+            <span class="tag csds">Delhi Project</span>
+            <h3>Delhi Sewage Infrastructure Accountability Project</h3>
+            <p>An RTI-based analysis of sewage treatment capacity, utilisation, expenditure, and governance gaps across Delhi Jal Board 32 STPs.</p>
+          </section>
+
+          <section class="stp-block stp-explainer-grid">
+            <article>
+              <span class="mono">What is the project?</span>
+              <h4>Public infrastructure, read through RTI records.</h4>
+              <p>The project examines sewage treatment capacity, utilisation, expenditure disclosure, and governance gaps across Delhi Jal Board STPs.</p>
+            </article>
+            <article>
+              <span class="mono">Why was it undertaken?</span>
+              <h4>To make infrastructure performance legible.</h4>
+              <p>The analysis turns plant-level RTI disclosures into a public-facing record of capacity use, underuse, overload, and disclosure quality.</p>
+            </article>
+            <article>
+              <span class="mono">What does it answer?</span>
+              <h4>Where Delhi's treatment system is working, idle, strained, or opaque.</h4>
+              <p>The report identifies utilisation patterns, financial disclosure gaps, operational anomalies, and governance risks across the STP network.</p>
+            </article>
+          </section>
+
+          <section class="stp-block">
+            <div class="stp-block-heading">
+              <span class="mono">Major Findings</span>
+              <h3>The record in six numbers</h3>
+            </div>
+            <div class="stp-metric-grid" id="stpExecutiveMetrics"></div>
+          </section>
+
+          <section class="stp-block">
+            <div class="stp-block-heading">
+              <span class="mono">Showcase Visualisations</span>
+              <h3>Three ways to read the system</h3>
+            </div>
+            <div class="stp-visual-grid">
+              <article class="stp-visual-card">
+                <h4>Utilisation Distribution</h4>
+                <div id="stpUtilisationDistribution"></div>
+              </article>
+              <article class="stp-visual-card">
+                <h4>Top Underutilised Plants</h4>
+                <div id="stpUnderutilisedChart"></div>
+              </article>
+              <article class="stp-visual-card stp-wide-card">
+                <h4>Capital Cost vs Utilisation</h4>
+                <div id="stpScatterPlot"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="stp-block">
+            <div class="stp-block-heading">
+              <span class="mono">Governance Implications</span>
+              <h3>Why it matters</h3>
+            </div>
+            <div class="stp-narrative" id="stpResearchNarrative"></div>
+          </section>
+
+          <section class="stp-dashboard-cta">
+            <p>Explore the full interactive dashboard</p>
+            <a class="button" href="#dashboards">View Dashboard</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-section" id="dashboards" data-page="dashboards">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">Dashboards</div>
+        <h2 class="section-title reveal">Delhi STP Dashboard</h2>
+        <p class="section-intro reveal">A policy intelligence workspace for exploring sewage treatment capacity, utilisation, expenditure disclosure, and governance risk across Delhi Jal Board STPs.</p>
+
+        <div class="stp-dashboard reveal" id="delhi-stp-dashboard">
+          <section class="stp-dashboard-section stp-command-centre">
+            <div class="stp-dashboard-heading">
+              <span class="mono">At a glance</span>
+              <h3>System snapshot</h3>
+            </div>
+            <div class="stp-control-grid" id="stpControlGrid"></div>
+          </section>
+
+          <section class="stp-dashboard-section stp-map-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Map</span>
+              <h3>Interactive Delhi STP Map</h3>
+              <p>Markers use coordinate-backed STP locations. Open any plant to inspect capacity, utilisation, expenditure disclosure, remarks, and Google Maps location.</p>
+            </div>
+            <div class="stp-map-layout">
+              <div class="stp-map" id="stpMap"></div>
+              <div class="stp-map-detail" id="stpMapDetail"></div>
+            </div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Explorer</span>
+              <h3>Plant Explorer</h3>
+            </div>
+            <div class="stp-filter-grid">
+              <input id="stpSearch" class="search" type="search" placeholder="Search plant name">
+              <select id="stpDivisionFilter"></select>
+              <select id="stpUtilisationFilter"></select>
+              <select id="stpCapacityFilter"></select>
+              <select id="stpOwnershipFilter"></select>
+              <select id="stpFlagFilter"></select>
+            </div>
+            <div class="stp-table-wrap">
+              <table class="stp-table" id="stpPlantTable"></table>
+            </div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Capacity</span>
+              <h3>Capacity Intelligence</h3>
+            </div>
+            <div class="stp-dashboard-grid" id="stpCapacityDashboard"></div>
+            <div class="stp-chart-deck" id="stpCapacityCharts"></div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Finance</span>
+              <h3>Financial Intelligence</h3>
+            </div>
+            <div class="stp-dashboard-grid" id="stpFinancialDashboard"></div>
+            <div class="stp-chart-deck" id="stpFinancialCharts"></div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Risk</span>
+              <h3>Governance Risk Centre</h3>
+            </div>
+            <div class="stp-issue-grid" id="stpGovernanceDashboard"></div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Transparency</span>
+              <h3>Transparency Tracker</h3>
+            </div>
+            <div class="stp-transparency-grid" id="stpTransparencyDashboard"></div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Issues</span>
+              <h3>Flag Explorer</h3>
+            </div>
+            <div class="stp-flag-filter-row" id="stpFlagButtons"></div>
+            <div class="stp-flag-list" id="stpFlagExplorer"></div>
+          </section>
+
+          <section class="stp-dashboard-section">
+            <div class="stp-dashboard-heading">
+              <span class="mono">Files</span>
+              <h3>Download Centre</h3>
+            </div>
+            <div class="stp-download-grid">
+              <a class="stp-download" href="data/stp_master.csv" download>STP master CSV</a>
+              <a class="stp-download" href="data/stp_om.csv" download>O&amp;M CSV</a>
+              <a class="stp-download" href="data/stp_flags.csv" download>Flags CSV</a>
+              <a class="stp-download" href="data/stp_summary.csv" download>Summary CSV</a>
+              <a class="stp-download" href="data/stp_coordinates.csv" download>Coordinate template</a>
+              <a class="stp-download" href="assets/reports/delhi-stp-rti-report.docx" download>Research report</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt page-section" id="newsletter" data-page="newsletter">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">Newsletter</div>
+        <h2 class="section-title reveal">Notes for people who follow politics closely.</h2>
+        <div class="newsletter-panel reveal" style="--panel-accent: var(--teal)">
+          <div>
+            <h3>Field notes on politics, data, and democracy</h3>
+            <p>Short essays, reading notes, research dispatches, and reflections on how elections, institutions, technology, and public policy are changing in India.</p>
+          </div>
+          <span class="newsletter-placeholder">Newsletter</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-section" id="writing" data-page="writing">
+      <div class="wrap">
+        <div class="section-kicker mono reveal">Writing Archive</div>
         <h2 class="section-title reveal">Publications<br>&amp; Research</h2>
         <p class="section-intro reveal">
           The centre of the portfolio is the work itself: published articles, policy-facing research, national reports, and writing that turns political data into arguments a wider public can use.
         </p>
+
+        <div class="writing-board reveal">
+          <div class="writing-board-copy">
+            <span class="tag hindu">Writing</span>
+            <h3>Editorial arguments backed by political data.</h3>
+            <p>The archive moves between digital campaigns, voter behaviour, governance, Parliament, and public policy.</p>
+          </div>
+          <div class="writing-wall" aria-label="Selected article visuals">
+            <article class="writing-tile">
+              <img src="assets/featured/elephant-data-room.jpg" alt="The Hindu article titled The elephant in India's data room" loading="lazy">
+              <span>Data governance</span>
+            </article>
+            <article class="writing-tile">
+              <img src="assets/featured/gaps-digital-campaigns.jpg" alt="The Hindu article titled Gaps in regulating digital campaigns" loading="lazy">
+              <span>Digital campaigns</span>
+            </article>
+            <article class="writing-tile">
+              <img src="assets/featured/democratic-digital-plugin.jpg" alt="The Hindu editorial titled Democratic engagement with a digital plug-in" loading="lazy">
+              <span>Digital democracy</span>
+            </article>
+            <article class="writing-tile">
+              <img src="assets/featured/joy-fear-anger.jpg" alt="The Hindu article titled Joy, fear and anger" loading="lazy">
+              <span>Campaign emotions</span>
+            </article>
+          </div>
+        </div>
 
         <div class="archive-tools reveal">
           <input class="search" id="archiveSearch" type="search" placeholder="Search by title, outlet, topic, or collaborator" aria-label="Search publications">
@@ -1600,9 +2779,9 @@
       </div>
     </section>
 
-    <section class="section alt" id="research">
+    <section class="section alt page-section" id="about" data-page="about">
       <div class="wrap">
-        <div class="section-kicker mono reveal">02 - Research Exposure</div>
+        <div class="section-kicker mono reveal">About</div>
         <h2 class="section-title reveal">Collaborators<br>&amp; Mentors</h2>
         <p class="section-intro reveal">
           This section is designed to signal more than affiliation. It shows the research rooms, political offices, scholars, journalists, public policy teams, and field-facing projects that shaped the way Abhishek works.
@@ -1725,9 +2904,9 @@
       </div>
     </section>
 
-    <section class="section" id="credentials">
+    <section class="section page-section" id="credentials" data-page="about">
       <div class="wrap">
-        <div class="section-kicker mono reveal">03 - Credentials</div>
+        <div class="section-kicker mono reveal">Credentials</div>
         <h2 class="section-title reveal">Education &amp;<br>Recognition</h2>
         <p class="section-intro reveal">
           The credentials section keeps the formal record compact: education, exchange selection, parliamentary training, and national science recognition before the political research career accelerated.
@@ -1787,12 +2966,12 @@
       </div>
     </section>
 
-    <section class="section alt" id="pipeline">
+    <section class="section alt page-section" id="pipeline" data-page="research">
       <div class="wrap">
-        <div class="section-kicker mono reveal">04 - Research Pipeline</div>
-        <h2 class="section-title reveal">Research<br>Pipeline</h2>
+        <div class="section-kicker mono reveal">Pipeline &amp; Live Questions</div>
+        <h2 class="section-title reveal">What I am building next.</h2>
         <p class="section-intro reveal">
-          The pipeline is where the portfolio stops being only a record of past work. It signals the intellectual agenda: state elections, platform politics, political timing, voter response, and municipal governance data.
+          These are the questions currently shaping the next phase of work: state elections, platform politics, political timing, voter response, and municipal governance data.
         </p>
 
         <div class="pipeline-note reveal">
@@ -1848,9 +3027,9 @@
       </div>
     </section>
 
-    <section class="section" id="moments">
+    <section class="section page-section" id="moments" data-page="about">
       <div class="wrap">
-        <div class="section-kicker mono reveal">05 - Key Moments</div>
+        <div class="section-kicker mono reveal">Key Moments</div>
         <h2 class="section-title reveal">Key<br>Moments</h2>
         <p class="section-intro reveal">
           This is where report release photographs, screenshots of praise, byline images, university exchange pictures, and high-engagement LinkedIn posts can live without breaking the editorial seriousness of the site.
@@ -1914,9 +3093,9 @@
       </div>
     </section>
 
-    <section class="section alt" id="contact">
+    <section class="section alt page-section" id="contact" data-page="contact">
       <div class="wrap">
-        <div class="section-kicker mono reveal">06 - Contact</div>
+        <div class="section-kicker mono reveal">Contact</div>
         <div class="contact-grid">
           <div>
             <h2 class="contact-title reveal">Let's talk <em>politics.</em></h2>
@@ -1938,7 +3117,7 @@
           </div>
 
           <form class="contact-form reveal" id="contactForm" novalidate>
-            <span class="tag foif">Collaboration Desk</span>
+            <span class="tag foif">Collaboration</span>
             <h3 class="card-title">Start a conversation</h3>
             <p class="card-copy">A short message opens as an email draft, keeping the site static and easy to host.</p>
             <div class="form-grid">
@@ -1985,6 +3164,7 @@
     <span>Political Researcher - Electoral Analyst - Writer</span>
   </footer>
 
+  <script src="data/stp_data.js"></script>
   <script>
     const topbar = document.getElementById("topbar");
     const archiveSearch = document.getElementById("archiveSearch");
@@ -1992,10 +3172,150 @@
     const archiveEmpty = document.getElementById("archiveEmpty");
     const filters = Array.from(document.querySelectorAll(".filter"));
     const publications = Array.from(document.querySelectorAll(".pub"));
+    const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+    const pageSections = Array.from(document.querySelectorAll(".page-section"));
+    const featureTrack = document.getElementById("featureTrack");
+    const featureCards = Array.from(document.querySelectorAll(".feature-card"));
+    const featurePrev = document.getElementById("featurePrev");
+    const featureNext = document.getElementById("featureNext");
+    const interestType = document.getElementById("interestType");
+    const researchTabs = Array.from(document.querySelectorAll(".research-tab"));
+    const researchPanels = Array.from(document.querySelectorAll(".research-panel"));
+    let featureIndex = 0;
+    let currentPage = "home";
+
+    const pageBySection = {
+      hero: "home",
+      featured: "home",
+      media: "home",
+      research: "research",
+      pipeline: "research",
+      writing: "writing",
+      dashboards: "dashboards",
+      about: "about",
+      credentials: "about",
+      moments: "about",
+      newsletter: "newsletter",
+      contact: "contact"
+    };
+
+    function pageForHash(hash) {
+      const id = String(hash || "#hero").replace("#", "") || "hero";
+      return pageBySection[id] || "home";
+    }
+
+    function setActiveNav(page) {
+      navLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.dataset.pageTarget === page);
+      });
+    }
+
+    function showPage(page, targetId, shouldScroll) {
+      currentPage = page || "home";
+      document.body.dataset.page = currentPage;
+      pageSections.forEach((section) => {
+        section.hidden = section.dataset.page !== currentPage;
+      });
+      setActiveNav(currentPage);
+
+      if (!shouldScroll) return;
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById(targetId || (currentPage === "home" ? "hero" : currentPage));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
 
     window.addEventListener("scroll", () => {
       topbar.classList.toggle("is-scrolled", window.scrollY > 40);
     });
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
+      const targetId = hash.slice(1);
+      if (!pageBySection[targetId]) return;
+      event.preventDefault();
+      history.pushState(null, "", hash);
+      showPage(pageForHash(hash), targetId, true);
+    });
+
+    window.addEventListener("popstate", () => {
+      const targetId = (window.location.hash || "#hero").slice(1) || "hero";
+      showPage(pageForHash(window.location.hash), targetId, true);
+    });
+
+    const initialTarget = (window.location.hash || "#hero").slice(1) || "hero";
+    showPage(pageForHash(window.location.hash), initialTarget, false);
+    if (window.location.hash && pageBySection[initialTarget]) {
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById(initialTarget);
+        if (target) target.scrollIntoView({ block: "start" });
+      });
+    }
+
+    if (researchTabs.length && researchPanels.length) {
+      researchTabs.forEach((button) => {
+        button.addEventListener("click", () => {
+          const active = button.dataset.researchTab;
+          researchTabs.forEach((tabButton) => {
+            const isActive = tabButton === button;
+            tabButton.classList.toggle("is-active", isActive);
+            tabButton.setAttribute("aria-selected", String(isActive));
+          });
+          researchPanels.forEach((panel) => {
+            panel.classList.toggle("is-active", panel.dataset.researchPanel === active);
+          });
+        });
+      });
+    }
+
+    const interestPhrases = [
+      "elections",
+      "politics",
+      "democracy",
+      "technology",
+      "digital democracy",
+      "digital politics"
+    ];
+
+    function startInterestTypewriter() {
+      if (!interestType) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        interestType.textContent = interestPhrases.join(", ");
+        return;
+      }
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function tick() {
+        const phrase = interestPhrases[phraseIndex];
+        charIndex += deleting ? -1 : 1;
+        interestType.textContent = phrase.slice(0, charIndex);
+
+        if (!deleting && charIndex === phrase.length) {
+          deleting = true;
+          window.setTimeout(tick, 1250);
+          return;
+        }
+
+        if (deleting && charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % interestPhrases.length;
+          window.setTimeout(tick, 240);
+          return;
+        }
+
+        window.setTimeout(tick, deleting ? 36 : 72);
+      }
+
+      tick();
+    }
+
+    startInterestTypewriter();
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -2044,6 +3364,18 @@
     });
 
     archiveSearch.addEventListener("input", applyArchiveFilter);
+
+    function moveFeature(direction) {
+      if (!featureTrack || !featureCards.length) return;
+      featureIndex = (featureIndex + direction + featureCards.length) % featureCards.length;
+      featureTrack.style.transform = "translateX(" + (-featureIndex * 100) + "%)";
+    }
+
+    if (featurePrev && featureNext) {
+      featurePrev.addEventListener("click", () => moveFeature(-1));
+      featureNext.addEventListener("click", () => moveFeature(1));
+      window.setInterval(() => moveFeature(1), 5200);
+    }
 
     const contactForm = document.getElementById("contactForm");
     const formError = document.getElementById("formError");
@@ -2160,6 +3492,7 @@
 
     setupAtlas();
   </script>
+  <script defer src="stp-dashboard.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

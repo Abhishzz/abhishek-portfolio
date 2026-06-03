@@ -1,0 +1,33 @@
+plant_id,stp_name,latitude,longitude,placeholder_x_percent,placeholder_y_percent,coordinate_status
+stp_01,Yamuna Vihar Ph-I,28.7025,77.2920,12,16,Geocoded coordinate for map display; verify before field use
+stp_02,Yamuna Vihar Ph-II,28.7030,77.2925,22.8,16,Geocoded coordinate for map display; verify before field use
+stp_03,Sonia Vihar WWTP,28.7105,77.2505,33.6,16,Geocoded coordinate for map display; verify before field use
+stp_04,Yamuna Vihar (25 MGD),28.7020,77.2910,44.400000000000006,16,Geocoded coordinate for map display; verify before field use
+stp_05,Kondli Ph-I,28.6175,77.3197,55.2,16,Geocoded coordinate for map display; verify before field use
+stp_06,Kondli Ph-II,28.6180,77.3202,66,16,Geocoded coordinate for map display; verify before field use
+stp_07,Kondli Ph-III,28.6185,77.3207,76.80000000000001,16,Geocoded coordinate for map display; verify before field use
+stp_08,Kondli Ph-IV,28.6190,77.3212,87.60000000000001,16,Geocoded coordinate for map display; verify before field use
+stp_09,Chilla STP,28.5907,77.3058,12,34,Geocoded coordinate for map display; verify before field use
+stp_10,CWG Village Akshardham,28.6117,77.2858,22.8,34,Geocoded coordinate for map display; verify before field use
+stp_11,Okhla 124 MGD,28.5520,77.3010,33.6,34,Geocoded coordinate for map display; verify before field use
+stp_12,Okhla 30 MGD,28.5515,77.3005,44.400000000000006,34,Geocoded coordinate for map display; verify before field use
+stp_13,Okhla 16 MGD,28.5510,77.3000,55.2,34,Geocoded coordinate for map display; verify before field use
+stp_14,Delhi Gate Ph-II,28.6366,77.2525,66,34,Geocoded coordinate for map display; verify before field use
+stp_15,Delhi Gate Ph-I,28.6361,77.2520,76.80000000000001,34,Geocoded coordinate for map display; verify before field use
+stp_16,SNH,28.6356,77.2515,87.60000000000001,34,Geocoded coordinate for map display; verify before field use
+stp_17,Ghitorani,28.4935,77.1472,12,52,Geocoded coordinate for map display; verify before field use
+stp_18,Vasant Kunj Ph-I,28.5320,77.1558,22.8,52,Geocoded coordinate for map display; verify before field use
+stp_19,Vasant Kunj Ph-II,28.5306,77.1568,33.6,52,Geocoded coordinate for map display; verify before field use
+stp_20,Mehrauli STP,28.5205,77.1852,44.400000000000006,52,Geocoded coordinate for map display; verify before field use
+stp_21,Keshopur STP Ph-I,28.6527,77.0858,55.2,52,Geocoded coordinate for map display; verify before field use
+stp_22,Keshopur STP Ph-II,28.6530,77.0862,66,52,Geocoded coordinate for map display; verify before field use
+stp_23,Keshopur STP Ph-III,28.6534,77.0866,76.80000000000001,52,Geocoded coordinate for map display; verify before field use
+stp_24,Najafgarh STP,28.6127,76.9857,87.60000000000001,52,Geocoded coordinate for map display; verify before field use
+stp_25,Nilothi STP-II,28.6571,77.0537,12,70,Geocoded coordinate for map display; verify before field use
+stp_26,Rohini STP,28.7245,77.1141,22.8,70,Geocoded coordinate for map display; verify before field use
+stp_27,Rithala STP (EE-XII claim),28.7208,77.1072,33.6,70,Geocoded coordinate for map display; verify before field use
+stp_28,Rithala Ph-I (EE-IX claim),28.7212,77.1077,44.400000000000006,70,Geocoded coordinate for map display; verify before field use
+stp_29,Coronation Pillar NSTP 70 MGD,28.7290,77.1910,55.2,70,Geocoded coordinate for map display; verify before field use
+stp_30,Coronation Pillar NSTP 20 MGD,28.7294,77.1915,66,70,Geocoded coordinate for map display; verify before field use
+stp_31,Coronation Pillar NSTP 10 MGD,28.7298,77.1920,76.80000000000001,70,Geocoded coordinate for map display; verify before field use
+stp_32,Coronation Pillar NSTP 15 MGD,28.7302,77.1925,87.60000000000001,70,Geocoded coordinate for map display; verify before field use

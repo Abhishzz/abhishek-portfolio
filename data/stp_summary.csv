@@ -1,0 +1,13 @@
+summary_id,source_docx,source_table,source_row,metric,value
+summary_01,STP_Analysis_Final (2) (1).docx,Aggregate Summary,2,Total STPs identified,32
+summary_02,STP_Analysis_Final (2) (1).docx,Aggregate Summary,3,STPs at 100% utilisation,10 (31.3% of total)
+summary_03,STP_Analysis_Final (2) (1).docx,Aggregate Summary,4,STPs overloaded (>100%),5 (15.6% of total)
+summary_04,STP_Analysis_Final (2) (1).docx,Aggregate Summary,5,STPs underutilised (<100%),17 (53.1% of total)
+summary_05,STP_Analysis_Final (2) (1).docx,Aggregate Summary,6,Total Installed Capacity (MGD),713.6 MGD
+summary_06,STP_Analysis_Final (2) (1).docx,Aggregate Summary,7,Total Utilised Capacity (MGD),601.51 MGD
+summary_07,STP_Analysis_Final (2) (1).docx,Aggregate Summary,8,Overall Utilisation Rate,84.3%
+summary_08,STP_Analysis_Final (2) (1).docx,Aggregate Summary,9,New STPs / upgrades (last 5 yrs),Yamuna Vihar Ph-II upgraded 2025; Sonia Vihar commissioned 2024; Keshopur Ph-III upgraded 40→60 MGD; Rohini STP +10 MGD (Rs 37.50 Cr)
+summary_09,STP_Analysis_Final (2) (1).docx,Aggregate Summary,10,Dual-zone conflicts identified,2 (Yamuna Vihar: SE-I vs EE-XIII; Rithala: EE-XII vs EE-IX)
+summary_10,STP_Analysis_Final (2) (1).docx,Aggregate Summary,11,Plants with NIL O&M (last 5 yrs),1 (Rithala Ph-I — under rehabilitation despite 101.7% loading)
+summary_note_01,STP_Analysis_Final (2) (1).docx,Report note,,RTI disclosure note,NOTE: Kondli Ph I-IV and Chilla STP (EE-SDW-IV) — RTI response withheld as 'bulky'; utilisation claimed 100% by division but no granular data provided. Figures above use division claim. Independent verification not possible from RTI alone.
+summary_aggregate_total_01,STP_Analysis_Final (2) (1).docx,"STP-wise Detail: Installed Capacity, Utilisation, O&M and Remarks",34,AGGREGATE TOTAL (All STPs),AGGREGATE TOTAL (All STPs) | 713.6 | 601.51 | 84.3% | 10 at 100% (31.3%) | 5 overloaded >100% (15.6%) | 17 underutilised <100% (53.1%)
