@@ -862,3 +862,14 @@
     gap: 4px;
   }
 }
+
+
+.stp-dashboard{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+}
+
+.stp-control-grid{
+    display:grid !important;
+}
