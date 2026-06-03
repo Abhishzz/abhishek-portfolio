@@ -7,7 +7,7 @@
   <title>Abhishek Sharma - Political Researcher & Writer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #0d0f0e;
@@ -2313,18 +2313,25 @@
         </div>
 
         <div class="stp-publication reveal" id="delhi-stp-research" hidden>
+          <nav class="stp-sticky-nav" aria-label="Delhi research sections">
+            <a href="#stpProjectOverview">Overview</a>
+            <a href="#stpProjectFindings">Findings</a>
+            <a href="#stpProjectMethodology">Methodology</a>
+            <a href="#stpProjectRisks">Key Risks</a>
+            <a href="#dashboards">Dashboard</a>
+          </nav>
           <button class="research-back" type="button" id="stpProjectBack">← Delhi</button>
-          <section class="stp-project-hero">
+          <section class="stp-project-hero" id="stpProjectOverview">
             <span class="tag csds">Delhi Project</span>
             <h3>Delhi Sewage Infrastructure Accountability Project</h3>
-            <p>An RTI-based analysis of sewage treatment capacity, utilisation, expenditure, and governance gaps across Delhi Jal Board 32 STPs.</p>
+            <p>An RTI-based analysis of sewage treatment capacity, utilisation, expenditure, and governance gaps across Delhi Jal Board's 32 Sewage Treatment Plants (STPs).</p>
           </section>
 
-          <section class="stp-block stp-explainer-grid">
+          <section class="stp-block stp-explainer-grid" id="stpProjectMethodology">
             <article>
               <span class="mono">What is the project?</span>
               <h4>Public infrastructure, read through RTI records.</h4>
-              <p>The project examines sewage treatment capacity, utilisation, expenditure disclosure, and governance gaps across Delhi Jal Board STPs.</p>
+              <p>The project examines treatment capacity, plant utilisation, expenditure disclosure, and governance gaps across Delhi Jal Board sewage infrastructure.</p>
             </article>
             <article>
               <span class="mono">Why was it undertaken?</span>
@@ -2338,10 +2345,10 @@
             </article>
           </section>
 
-          <section class="stp-block">
+          <section class="stp-block" id="stpProjectFindings">
             <div class="stp-block-heading">
               <span class="mono">Major Findings</span>
-              <h3>The record in six numbers</h3>
+              <h3>Key findings at a glance</h3>
             </div>
             <div class="stp-metric-grid" id="stpExecutiveMetrics"></div>
           </section>
@@ -2367,7 +2374,7 @@
             </div>
           </section>
 
-          <section class="stp-block">
+          <section class="stp-block" id="stpProjectRisks">
             <div class="stp-block-heading">
               <span class="mono">Governance Implications</span>
               <h3>Why it matters</h3>
@@ -2386,22 +2393,31 @@
     <section class="section page-section" id="dashboards" data-page="dashboards">
       <div class="wrap">
         <div class="section-kicker mono reveal">Dashboards</div>
-        <h2 class="section-title reveal">Delhi STP Dashboard</h2>
-        <p class="section-intro reveal">A policy intelligence workspace for exploring sewage treatment capacity, utilisation, expenditure disclosure, and governance risk across Delhi Jal Board STPs.</p>
+        <h2 class="section-title reveal">Delhi Sewage Infrastructure Dashboard</h2>
+        <p class="section-intro reveal">A policy intelligence workspace for exploring capacity, utilisation, financial transparency, information disclosure, and governance risk across Delhi Jal Board Sewage Treatment Plants (STPs).</p>
 
         <div class="stp-dashboard reveal" id="delhi-stp-dashboard">
-          <section class="stp-dashboard-section stp-command-centre">
+          <nav class="stp-sticky-nav stp-dashboard-nav" aria-label="Dashboard sections">
+            <a href="#stpDashboardOverview">Overview</a>
+            <a href="#stpDashboardMap">Map</a>
+            <a href="#stpDashboardCapacity">Capacity</a>
+            <a href="#stpDashboardFinance">Finance</a>
+            <a href="#stpDashboardDisclosure">Disclosure</a>
+            <a href="#stpDashboardRisks">Risks</a>
+            <a href="#stpDashboardDownloads">Downloads</a>
+          </nav>
+          <section class="stp-dashboard-section stp-command-centre" id="stpDashboardOverview">
             <div class="stp-dashboard-heading">
               <span class="mono">At a glance</span>
-              <h3>System snapshot</h3>
+              <h3>Delhi Sewage Infrastructure Overview</h3>
             </div>
             <div class="stp-control-grid" id="stpControlGrid"></div>
           </section>
 
-          <section class="stp-dashboard-section stp-map-section">
+          <section class="stp-dashboard-section stp-map-section" id="stpDashboardMap">
             <div class="stp-dashboard-heading">
               <span class="mono">Map</span>
-              <h3>Interactive Delhi STP Map</h3>
+              <h3>Location-wise Performance of Delhi Sewage Treatment Plants</h3>
               <p>Markers use coordinate-backed STP locations. Open any plant to inspect capacity, utilisation, expenditure disclosure, remarks, and Google Maps location.</p>
             </div>
             <div class="stp-map-layout">
@@ -2422,31 +2438,32 @@
               <select id="stpCapacityFilter"></select>
               <select id="stpOwnershipFilter"></select>
               <select id="stpFlagFilter"></select>
+              <select id="stpSortFilter"></select>
             </div>
             <div class="stp-table-wrap">
               <table class="stp-table" id="stpPlantTable"></table>
             </div>
           </section>
 
-          <section class="stp-dashboard-section">
+          <section class="stp-dashboard-section" id="stpDashboardCapacity">
             <div class="stp-dashboard-heading">
               <span class="mono">Capacity</span>
-              <h3>Capacity Intelligence</h3>
+              <h3>Capacity & Utilisation Analysis</h3>
             </div>
             <div class="stp-dashboard-grid" id="stpCapacityDashboard"></div>
             <div class="stp-chart-deck" id="stpCapacityCharts"></div>
           </section>
 
-          <section class="stp-dashboard-section">
+          <section class="stp-dashboard-section" id="stpDashboardFinance">
             <div class="stp-dashboard-heading">
               <span class="mono">Finance</span>
-              <h3>Financial Intelligence</h3>
+              <h3>Funding, Expenditure & Financial Transparency</h3>
             </div>
             <div class="stp-dashboard-grid" id="stpFinancialDashboard"></div>
             <div class="stp-chart-deck" id="stpFinancialCharts"></div>
           </section>
 
-          <section class="stp-dashboard-section">
+          <section class="stp-dashboard-section" id="stpDashboardRisks">
             <div class="stp-dashboard-heading">
               <span class="mono">Risk</span>
               <h3>Governance Risk Centre</h3>
@@ -2454,10 +2471,10 @@
             <div class="stp-issue-grid" id="stpGovernanceDashboard"></div>
           </section>
 
-          <section class="stp-dashboard-section">
+          <section class="stp-dashboard-section" id="stpDashboardDisclosure">
             <div class="stp-dashboard-heading">
               <span class="mono">Transparency</span>
-              <h3>Transparency Tracker</h3>
+              <h3>Information Disclosure Analysis</h3>
             </div>
             <div class="stp-transparency-grid" id="stpTransparencyDashboard"></div>
           </section>
@@ -2465,13 +2482,13 @@
           <section class="stp-dashboard-section">
             <div class="stp-dashboard-heading">
               <span class="mono">Issues</span>
-              <h3>Flag Explorer</h3>
+              <h3>Governance Risks & Red Flags</h3>
             </div>
             <div class="stp-flag-filter-row" id="stpFlagButtons"></div>
             <div class="stp-flag-list" id="stpFlagExplorer"></div>
           </section>
 
-          <section class="stp-dashboard-section">
+          <section class="stp-dashboard-section" id="stpDashboardDownloads">
             <div class="stp-dashboard-heading">
               <span class="mono">Files</span>
               <h3>Download Centre</h3>

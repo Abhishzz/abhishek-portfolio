@@ -27,13 +27,27 @@
     if (/full/i.test(status)) return "full";
     return "";
   };
-  const accentFor = (status) => {
-    if (/over/i.test(status)) return "var(--rust)";
-    if (/under/i.test(status)) return "var(--gold)";
-    if (/full/i.test(status)) return "var(--green)";
-    return "var(--teal)";
+  const utilisationColor = (plantOrRate) => {
+    const rate = typeof plantOrRate === "object" ? number(plantOrRate.rate_percent_max) : number(plantOrRate);
+    if (rate == null) return "#8da3b8";
+    if (rate < 70) return "#d6a14a";
+    if (rate < 95) return "#74b77a";
+    if (rate <= 105) return "#8da3b8";
+    return "#d96b55";
+  };
+  const accentFor = (status, plant) => {
+    if (plant) return utilisationColor(plant);
+    if (/over/i.test(status)) return "#d96b55";
+    if (/under/i.test(status)) return "#d6a14a";
+    if (/full/i.test(status)) return "#8da3b8";
+    return "#74b77a";
   };
   const metricNumber = (summaryText) => number(summaryText) || 0;
+  const splitMetric = (value) => {
+    const raw = text(value);
+    const match = raw.match(/^([^()]+?)\s*\(([^)]+)\)$/);
+    return match ? { main: match[1].trim(), context: match[2].trim() } : { main: raw, context: "" };
+  };
 
   function renderSourceNote() {
     const el = $("stpSourceNote");
@@ -71,10 +85,12 @@
   }
 
   function metricCard(label, value, note, accent = "var(--teal)") {
+    const metric = splitMetric(value);
     return `
       <article class="stp-metric-card" style="--card-accent:${accent}">
         <span class="stp-metric-label">${escapeHtml(label)}</span>
-        <strong class="stp-metric-value">${escapeHtml(value)}</strong>
+        <strong class="stp-metric-value">${escapeHtml(metric.main)}</strong>
+        ${metric.context ? `<span class="stp-metric-context">${escapeHtml(metric.context)}</span>` : ""}
         <p class="stp-metric-note">${escapeHtml(note)}</p>
       </article>
     `;
@@ -84,12 +100,12 @@
     const el = $("stpExecutiveMetrics");
     if (!el) return;
     el.innerHTML = [
-      metricCard("Total STPs", exactSummary("Total STPs identified"), "Plant-level records extracted from the report.", "var(--teal)"),
-      metricCard("Installed Capacity", exactSummary("Total Installed Capacity"), "Aggregate capacity as recorded in the report.", "var(--gold)"),
-      metricCard("Utilised Capacity", exactSummary("Total Utilised Capacity"), "Aggregate utilised capacity as recorded in the report.", "var(--green)"),
-      metricCard("Overall Utilisation", exactSummary("Overall Utilisation Rate"), "Report-level utilisation rate.", "var(--blue)"),
-      metricCard("Overloaded Plants", exactSummary("STPs overloaded"), "Summary classification from the report.", "var(--rust)"),
-      metricCard("Underutilised Plants", exactSummary("STPs underutilised"), "Summary classification from the report.", "var(--violet)"),
+      metricCard("Total Sewage Treatment Plants", exactSummary("Total STPs identified"), "Plant-level records in the analysis.", "var(--teal)"),
+      metricCard("Installed Capacity", exactSummary("Total Installed Capacity"), "Million Gallons Per Day (MGD).", "var(--gold)"),
+      metricCard("Utilised Capacity", exactSummary("Total Utilised Capacity"), "Reported treatment volume.", "#74b77a"),
+      metricCard("Overall Utilisation", exactSummary("Overall Utilisation Rate"), "System-level utilisation.", "#8da3b8"),
+      metricCard("Overloaded Plants", exactSummary("STPs overloaded"), "Plants above designed capacity.", "#d96b55"),
+      metricCard("Underutilised Plants", exactSummary("STPs underutilised"), "Plants below designed capacity.", "#d6a14a"),
     ].join("");
   }
 
@@ -98,9 +114,9 @@
     if (!el) return;
     const total = metricNumber(exactSummary("Total STPs identified"));
     const rows = [
-      ["Fully utilised", exactSummary("STPs at 100% utilisation"), "var(--green)"],
-      ["Underutilised", exactSummary("STPs underutilised"), "var(--gold)"],
-      ["Overloaded", exactSummary("STPs overloaded"), "var(--rust)"],
+      ["Fully utilised", exactSummary("STPs at 100% utilisation"), "#8da3b8"],
+      ["Underutilised", exactSummary("STPs underutilised"), "#d6a14a"],
+      ["Overloaded", exactSummary("STPs overloaded"), "#d96b55"],
     ];
     el.innerHTML = `<div class="stp-bars">${rows
       .map(([label, value, accent]) => {
@@ -270,9 +286,9 @@
       <span class="stp-pill ${statusClass(plant.utilisation_status)}">${escapeHtml(plant.utilisation_status)}</span>
       <h4>${escapeHtml(plant.stp_name)}</h4>
       <div class="stp-detail-list">
-        <div class="stp-detail-row"><span>Capacity</span><strong>${escapeHtml(plant.installed_mgd_raw)}</strong></div>
+        <div class="stp-detail-row"><span>Capacity</span><strong>${escapeHtml(plant.installed_mgd_raw)} MGD</strong></div>
         <div class="stp-detail-row"><span>Utilisation</span><strong>${escapeHtml(plant.utilised_mgd_raw)} (${escapeHtml(plant.rate_percent_raw)})</strong></div>
-        <div class="stp-detail-row"><span>O&M</span><strong>${escapeHtml(plant.om_expenditure_raw)}</strong></div>
+        <div class="stp-detail-row"><span>Operations & Maintenance</span><strong>${escapeHtml(plant.om_expenditure_raw)}</strong></div>
         <div class="stp-detail-row"><span>Capital Cost</span><strong>${escapeHtml(plant.capital_cost_raw)}</strong></div>
         <div class="stp-detail-row"><span>Division</span><strong>${escapeHtml(plant.division)}</strong></div>
         <div class="stp-detail-row"><span>Ownership</span><strong>${escapeHtml(plant.ownership_note)}</strong></div>
@@ -287,7 +303,15 @@
     const map = $("stpMap");
     const detail = $("stpMapDetail");
     if (!map || !detail) return;
-    map.innerHTML = `<div class="stp-map-outline" aria-hidden="true"></div><div class="stp-map-note">Coordinate-backed map display. Marker links open Google Maps for location review.</div>`;
+    map.innerHTML = `
+      <svg class="stp-map-outline" viewBox="0 0 100 100" aria-hidden="true">
+        <path class="stp-map-boundary" d="M50 3 L61 8 L67 17 L72 26 L70 35 L78 42 L84 53 L79 64 L74 76 L65 85 L54 96 L42 92 L32 87 L24 78 L18 67 L12 56 L16 45 L11 34 L18 23 L29 15 L39 10 Z"></path>
+        <path class="stp-map-gridline" d="M20 25 C40 34 58 31 77 45"></path>
+        <path class="stp-map-gridline" d="M17 60 C35 54 57 60 76 75"></path>
+        <path class="stp-map-gridline" d="M42 10 C43 34 45 64 53 94"></path>
+      </svg>
+      <div class="stp-map-note">Coordinate-backed map display. Markers open Google Maps for location review.</div>
+    `;
     plants.forEach((plant, index) => {
       const coord = coordinateFor(plant, index);
       const marker = document.createElement("button");
@@ -295,7 +319,7 @@
       marker.className = "stp-map-marker";
       marker.style.left = `${coord.x}%`;
       marker.style.top = `${coord.y}%`;
-      marker.style.setProperty("--marker-color", accentFor(plant.utilisation_status));
+      marker.style.setProperty("--marker-color", accentFor(plant.utilisation_status, plant));
       marker.setAttribute("aria-label", plant.stp_name);
       marker.title = `${plant.stp_name} | ${plant.rate_percent_raw}`;
       marker.addEventListener("click", () => {
@@ -322,7 +346,8 @@
     populateSelect("stpCapacityFilter", "All capacities", ["<=5 MGD", "5-20 MGD", "20+ MGD"]);
     populateSelect("stpOwnershipFilter", "All ownership notes", [...new Set(plants.map((p) => p.ownership_note).filter(Boolean))].sort());
     populateSelect("stpFlagFilter", "All flags", [...new Set(plants.flatMap(splitFlags))].sort());
-    ["stpSearch", "stpDivisionFilter", "stpUtilisationFilter", "stpCapacityFilter", "stpOwnershipFilter", "stpFlagFilter"].forEach((id) => {
+    populateSelect("stpSortFilter", "Sort plants", ["Highest utilisation", "Lowest utilisation", "Highest capacity", "Most underutilised", "Most transparent", "Least transparent"]);
+    ["stpSearch", "stpDivisionFilter", "stpUtilisationFilter", "stpCapacityFilter", "stpOwnershipFilter", "stpFlagFilter", "stpSortFilter"].forEach((id) => {
       const el = $(id);
       if (el) el.addEventListener("input", renderPlantTable);
     });
@@ -343,14 +368,26 @@
     const capacity = $("stpCapacityFilter")?.value || "";
     const ownership = $("stpOwnershipFilter")?.value || "";
     const flag = $("stpFlagFilter")?.value || "";
-    return plants
+    const selectedSort = $("stpSortFilter")?.value || "";
+    const transparencyRank = (plant) => plant.om_disclosure_status === "Full disclosure" ? 3 : plant.om_disclosure_status === "Partial disclosure" ? 2 : 1;
+    const rows = plants
       .filter((plant) => !search || plant.stp_name.toLowerCase().includes(search))
       .filter((plant) => !division || plant.division === division)
       .filter((plant) => !status || plant.utilisation_status === status)
       .filter((plant) => !capacity || capacityBucket(plant) === capacity)
       .filter((plant) => !ownership || plant.ownership_note === ownership)
-      .filter((plant) => !flag || splitFlags(plant).includes(flag))
-      .sort((a, b) => {
+      .filter((plant) => !flag || splitFlags(plant).includes(flag));
+    if (selectedSort) {
+      return rows.sort((a, b) => {
+        if (selectedSort === "Highest utilisation") return (number(b.rate_percent_max) || 0) - (number(a.rate_percent_max) || 0);
+        if (selectedSort === "Lowest utilisation" || selectedSort === "Most underutilised") return (number(a.rate_percent_min) || 0) - (number(b.rate_percent_min) || 0);
+        if (selectedSort === "Highest capacity") return (number(b.installed_mgd_number) || 0) - (number(a.installed_mgd_number) || 0);
+        if (selectedSort === "Most transparent") return transparencyRank(b) - transparencyRank(a);
+        if (selectedSort === "Least transparent") return transparencyRank(a) - transparencyRank(b);
+        return 0;
+      });
+    }
+    return rows.sort((a, b) => {
         const left = a[tableState.sortKey] || "";
         const right = b[tableState.sortKey] || "";
         const numericLeft = number(left);
@@ -371,9 +408,9 @@
       ["division", "Division"],
       ["installed_mgd_number", "Capacity"],
       ["utilised_mgd_raw", "Utilised"],
-      ["rate_percent_max", "Rate"],
+      ["rate_percent_max", "Utilisation"],
       ["utilisation_status", "Status"],
-      ["om_disclosure_status", "RTI Disclosure"],
+      ["om_disclosure_status", "Disclosure"],
       ["capital_cost_raw", "Capital Cost"],
       ["flag_types", "Flags"],
     ];
@@ -410,10 +447,12 @@
   }
 
   function dashboardCard(label, value, note, accent = "var(--teal)") {
+    const metric = splitMetric(value);
     return `
       <article class="stp-dashboard-card" style="--card-accent:${accent}">
         <span class="stp-card-label">${escapeHtml(label)}</span>
-        <strong class="stp-metric-value">${escapeHtml(value)}</strong>
+        <strong class="stp-metric-value">${escapeHtml(metric.main)}</strong>
+        ${metric.context ? `<span class="stp-metric-context">${escapeHtml(metric.context)}</span>` : ""}
         <p class="stp-card-note">${escapeHtml(note)}</p>
       </article>
     `;
@@ -423,12 +462,12 @@
     const el = $("stpControlGrid");
     if (!el) return;
     el.innerHTML = [
-      dashboardCard("STPs", exactSummary("Total STPs identified"), "All plant-level records.", "var(--teal)").replaceAll("stp-dashboard-card", "stp-control-card"),
-      dashboardCard("Installed", exactSummary("Total Installed Capacity"), "System capacity.", "var(--gold)").replaceAll("stp-dashboard-card", "stp-control-card"),
-      dashboardCard("Utilised", exactSummary("Total Utilised Capacity"), "Current use.", "var(--green)").replaceAll("stp-dashboard-card", "stp-control-card"),
-      dashboardCard("Utilisation", exactSummary("Overall Utilisation Rate"), "Overall rate.", "var(--blue)").replaceAll("stp-dashboard-card", "stp-control-card"),
-      dashboardCard("Overloaded", exactSummary("STPs overloaded"), "Above design.", "var(--rust)").replaceAll("stp-dashboard-card", "stp-control-card"),
-      dashboardCard("Underutilised", exactSummary("STPs underutilised"), "Below design.", "var(--violet)").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("Sewage Treatment Plants", exactSummary("Total STPs identified"), "All plant records.", "var(--teal)").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("Installed Capacity", exactSummary("Total Installed Capacity"), "Million Gallons Per Day.", "var(--gold)").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("Utilised Capacity", exactSummary("Total Utilised Capacity"), "Reported treatment.", "#74b77a").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("System Utilisation", exactSummary("Overall Utilisation Rate"), "Across all plants.", "#8da3b8").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("Overloaded Plants", exactSummary("STPs overloaded"), "Above designed capacity.", "#d96b55").replaceAll("stp-dashboard-card", "stp-control-card"),
+      dashboardCard("Underutilised Plants", exactSummary("STPs underutilised"), "Below designed capacity.", "#d6a14a").replaceAll("stp-dashboard-card", "stp-control-card"),
     ].join("");
   }
 
@@ -439,9 +478,9 @@
     const utilised = number(exactSummary("Total Utilised Capacity"));
     const idle = installed != null && utilised != null ? (installed - utilised).toFixed(2) + " MGD" : "See report";
     el.innerHTML = [
-      dashboardCard("Installed vs utilised", `${exactSummary("Total Installed Capacity")} / ${exactSummary("Total Utilised Capacity")}`, "Aggregate values from the report.", "var(--teal)"),
-      dashboardCard("Idle capacity", idle, "Derived as installed capacity minus utilised capacity from the report summary.", "var(--gold)"),
-      dashboardCard("Overloaded capacity", exactSummary("STPs overloaded"), "Report summary classification; individual overloaded plants are listed in the explorer.", "var(--rust)"),
+      dashboardCard("Installed vs utilised", `${exactSummary("Total Installed Capacity")} / ${exactSummary("Total Utilised Capacity")}`, "System capacity and reported use.", "var(--teal)"),
+      dashboardCard("Idle capacity", idle, "Installed minus utilised capacity.", "#d6a14a"),
+      dashboardCard("Plants above design capacity", exactSummary("STPs overloaded"), "Open Plant Explorer for details.", "#d96b55"),
     ].join("");
   }
 
@@ -479,7 +518,7 @@
       </article>
       <article class="stp-chart-card">
         <h4>Highest utilisation rates</h4>
-        ${miniBarRows(byRate, (p) => number(p.rate_percent_max), (p) => p.stp_name, Math.max(...byRate.map((p) => number(p.rate_percent_max) || 0)), (p) => accentFor(p.utilisation_status))}
+        ${miniBarRows(byRate, (p) => number(p.rate_percent_max), (p) => p.stp_name, Math.max(...byRate.map((p) => number(p.rate_percent_max) || 0)), (p) => accentFor(p.utilisation_status, p))}
       </article>
     `;
   }
@@ -492,8 +531,8 @@
     const rohani = plants.find((plant) => /Rohini/i.test(plant.stp_name));
     el.innerHTML = [
       dashboardCard("Capital costs disclosed", String(disclosedCapital.length), disclosedCapital.map((p) => `${p.stp_name}: ${p.capital_cost_raw}`).join(" | "), "var(--teal)"),
-      dashboardCard("O&M anomalies", String(anomalies.length), "Plants tagged from O&M remarks and governance flags.", "var(--rust)"),
-      dashboardCard("Budget utilisation", "62.5%", rohani?.anomaly_remarks_raw || "Recorded in report remarks.", "var(--gold)"),
+      dashboardCard("Operations & maintenance anomalies", String(anomalies.length), "Plants tagged from expenditure remarks and governance flags.", "#d96b55"),
+      dashboardCard("Budget utilisation", "62.5%", rohani?.anomaly_remarks_raw || "Recorded in report remarks.", "#d6a14a"),
     ].join("");
   }
 
@@ -515,7 +554,7 @@
         ${miniBarRows(capitalRows, (p) => number(p.capital_cost_number_raw), (p) => p.stp_name, Math.max(...capitalRows.map((p) => number(p.capital_cost_number_raw) || 0)), () => "var(--gold)")}
       </article>
       <article class="stp-chart-card">
-        <h4>O&M disclosure quality</h4>
+        <h4>Operations & Maintenance Data Availability</h4>
         ${miniBarRows(disclosureRows, (row) => row.value, (row) => row.label, Math.max(...disclosureRows.map((row) => row.value)), (row) => row.status === "Data withheld" ? "var(--rust)" : row.status === "Partial disclosure" ? "var(--gold)" : "var(--green)")}
       </article>
     `;
